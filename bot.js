@@ -92,6 +92,8 @@ controller.setupWebserver(port, function (err, webserver) {
             }else{
                 console.log("bot.botkit.identity= "+ bot.botkit.identity);
             }
+        }else{
+            console.log("healthcheck.bot = "+healthcheck.bot);
         }
 
         res.json(healthcheck);
