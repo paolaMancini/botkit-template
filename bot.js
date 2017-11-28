@@ -88,6 +88,9 @@ controller.setupWebserver(port, function (err, webserver) {
             var identity = bot.botkit.identity;
             if (bot.botkit.identity) {
                 healthcheck.bot = bot.botkit.identity.emails[0];
+                console.log("new  healthcheck.bot = "+ healthcheck.bot);
+            }else{
+                console.log("bot.botkit.identity= "+ bot.botkit.identity);
             }
         }
 
