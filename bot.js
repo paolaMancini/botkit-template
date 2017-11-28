@@ -26,6 +26,8 @@ if (!public_url) {
     // Heroku hosting: available if dyno metadata are enabled, https://devcenter.heroku.com/articles/dyno-metadata
     if (process.env.HEROKU_APP_NAME) {
         public_url = "https://" + process.env.HEROKU_APP_NAME + ".herokuapp.com";
+        console.log("@@@@@@@@@@@ public_url");
+
     }
 
     // Glitch hosting
