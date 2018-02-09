@@ -34,7 +34,7 @@ module.exports = function (controller, bot) {
     //
     // .botcommons skill
     //
-    controller.hears([/^about$/,/^about$/, /^botcommons$/, /^\.commons$/, /^\.bot$/], 'direct_message,direct_mention', function (bot, message) {
+    controller.hears([/^about$/,/^hello/, /^botcommons$/, /^\.commons$/, /^\.bot$/], 'direct_message,direct_mention', function (bot, message) {
 
         // Return metadata
         var metadata = '{\n'
