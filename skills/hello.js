@@ -6,7 +6,7 @@ module.exports = function(controller) {
 
         bot.startConversation(message, function(err, convo) {
 
-            convo.ask('How can help you?', function(response, convo) {
+            convo.ask('How can I help you?', function(response, convo) {
                 convo.next();
             });
         });
