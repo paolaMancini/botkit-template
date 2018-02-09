@@ -1,13 +1,15 @@
-//
-// Command: hello
-//
- 
-module.exports = function(controller) {
-    
-    
-      controller.hears('hello','message_received', function(bot, message) {
-    
-        bot.reply(message,'Hi');
-    
-      });
-}
+module.exports = function (controller) {
+
+    controller.hears([/^hello$/], 'direct_message,direct_mention', function (bot, message) {
+
+        bot.startConversation(message, function (err, convo) {
+            convo.say('This is a BotKit conversation sample.');
+
+            convo.ask('====> What is your favorite color?', function (response, convo) {
+                convo.say("Cool, I like '" + response.text + "' too!");
+                convo.next();
+            });
+        });
+
+    });
+};
