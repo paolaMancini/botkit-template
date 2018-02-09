@@ -1,16 +1,15 @@
  //
 // Command: hello
 //
-
-module.exports = function (controller) {
-
-    controller.hears('hello', 'hello'], 'direct_message,direct_mention', function (bot, message) {
-        var mardown = "Hi!\n";
-            
-        bot.reply(message, mardown);
-    });
  
- 
+ module.exports = function(controller) {
+
+
+  controller.hears('hello','message_received', function(bot, message) {
+
+    bot.reply(message,'Hi');
+
+  });
  
  
 © 2018 GitHub, Inc.
