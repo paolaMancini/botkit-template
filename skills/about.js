@@ -9,23 +9,9 @@ module.exports = function (controller, bot) {
     var botcommons = {
 
         // Bot description
-        "description": "It's an awesome bot for sure!",
+        "description": "It's indichat bot for sure!",
 
-        // Where to get more information about the bot
-        "url": "https://github.com/CiscoDevNet/botkit-template",
-
-        // Legal owner
-        "legal-owner": "Cisco DevNet <https://developer.cisco.com>",
-
-        // Contact name for support
-        "support-contact": "Stève Sfartz <mailto:stsfartz@cisco.com>",
-
-        // Messaging platform
-        "plaform": bot.type,
-
-        // the precise bot identity is loaded asynchronously, as /people/me request - issued by "BotKit CiscoSparkBot.js" - returns
-        "identity": "unknown",
-
+        
         // Endpoint where to check the bot is alive
         "healthcheck": "https://" + controller.config.public_address + process.env.HEALTHCHECK_ROUTE,
 
