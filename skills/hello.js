@@ -4,9 +4,8 @@
 
 module.exports = function (controller) {
 
-    controller.hears([/^hello$/], 'direct_message,direct_mention', function (bot, message) {
-        var mardown = "Hi!\n"
-            + bot.appendMention(message, "help");
+    controller.hears('hello', 'hello'], 'direct_message,direct_mention', function (bot, message) {
+        var mardown = "Hi!\n";
             
         bot.reply(message, mardown);
     });
