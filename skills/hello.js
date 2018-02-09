@@ -1,6 +1,6 @@
  module.exports = function (controller) {
 
-   controller.hears([/^hello$/], 'direct_message,direct_mention', function (bot, message) {
+   controller.hears([/^hello$/], 'direct_message,direct_mention', function (bot, event) {
 
         var welcome = `Hi <@personId:${event.actorId}>, so glad meeting you!`;
 
