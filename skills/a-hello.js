@@ -1,8 +1,8 @@
 module.exports = function(controller) {
 
-    controller.hears([/^hello$/], 'direct_message,direct_mention', function(bot, message) {
+    controller.hears([/^a-hello$/], 'direct_message,direct_mention', function(bot, message) {
 
-        var welcome = `Hi <@personId:${event.actorId}>!`;
+        var welcome = `Hi <@personId:${event.actorId}>`;
 
         bot.startConversation(message, function(err, convo) {
 
