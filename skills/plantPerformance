@@ -1,9 +1,18 @@
+var Client = require('node-rest-client').Client;
 module.exports = function (controller) {
 
     controller.hears([/plant performance\b/], 'direct_message,direct_mention', function (bot, message) {
+        var client = new Client();
+        client.get("http://194.79.57.109:8080/SFapi/machines", function (data, response) {
+            // parsed response body as js object 
+            console.log(data);
+            // raw response 
+            console.log(response);
+        });
 
+    
         bot.startConversation(message, function (err, convo) {
-            convo.say('This is a BotKit conversation sample.');
+          
 
             convo.ask('Do you want more details?', function (response, convo) {
                // convo.say("Cool, I like '" + response.text + "' too!");
