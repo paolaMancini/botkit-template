@@ -6,6 +6,7 @@ module.exports = function (controller) {
         client.get("http://194.79.57.109:8080/SFapi/machines", function (data, response) {
             // parsed response body as js object 
             console.log(data);
+            convo.say(data);
             // raw response 
             console.log(response);
         });
