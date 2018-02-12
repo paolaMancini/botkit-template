@@ -1,4 +1,5 @@
-controller.hears(['/question me\b/'], 'message_received,direct_message,direct_mention', function(bot,message) {
+module.exports = function (controller, bot) {
+ controller.hears(['/question me\b/'], 'message_received,direct_message,direct_mention', function(bot,message) {
 
  bot.createConversation(message, function(err, convo) {
 
@@ -45,3 +46,4 @@ controller.hears(['/question me\b/'], 'message_received,direct_message,direct_me
 });
 
 });
+}
