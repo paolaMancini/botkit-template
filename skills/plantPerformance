@@ -1,6 +1,6 @@
 module.exports = function (controller) {
     
-        controller.hears( [/plant performance\b/], 'direct_message,direct_mention', function(bot, message){
+        controller.hears ( [/plant performance\b/], 'direct_message,direct_mention', function(bot, message){
 
             var request = require('request');
             request('http://194.79.57.109:8080/SFapi/machines', function(error, response, body) {
@@ -20,11 +20,48 @@ module.exports = function (controller) {
             bot.startConversation(message, function (err, convo) {
               
     
-                convo.ask('Do you want more details?', function (response, convo) {
-                   // convo.say("Cool, I like '" + response.text + "' too!");
-                    convo.next();
-                });
-            });
-    
-        } );
+                convo.ask('Do you want more details?',[{
+                    pattern: 'done',
+                    callback: function(response, convo) {
+                        convo.say('OK you are done!');
+                        convo.next();
+                    }
+                },
+                {
+                    pattern: bot.utterances.yes,
+                    callback: function(response, convo) {
+                        convo.say('Great! I will continue...');
+                        // do something else...
+                        convo.next();
+
+                    }
+                },
+                {
+                    pattern: bot.utterances.no,
+                    callback: function(response, convo) {
+                        convo.say('Glad having been helped you);
+                            // do something else...
+                            convo.next();
+                        }
+                    },
+                    {
+                        default: true,
+                        callback: function(response, convo) {
+                            // just repeat the question
+                            convo.repeat();
+                            convo.next();
+                        }
+                    }
+                ], { key: "answer" }); 
+            }));
+     // Success thread
+     convo.addMessage(
+        "Cool, I love '{{responses.answer}}' too",
+        "success");
+
+    // No thread
+    convo.addMessage(
+        "Glad having been helped you",
+        "no");
+        });
     }
