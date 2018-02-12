@@ -10,7 +10,7 @@ module.exports = function (controller) {
           console.log('body:', body); // Print the HTML for the Google homepage.
           
           var jsonData = JSON.parse(body);
-          for (var i = 0; i < jsonData..length; i++) {
+          for (var i = 0; i < jsonData.length; i++) {
               var counter = jsonData.machines[i];
               console.log(counter.machine.oee);
           }
