@@ -40,4 +40,4 @@ controller.hears(['question me'], 'message_received', function(bot,message) {
 
   })
 
-});
+})
