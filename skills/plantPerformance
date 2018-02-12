@@ -1,5 +1,5 @@
  
-module.exports = function (controller) {
+dule.exports = function (controller) {
 
     controller.hears([/plant performance\b/], 'direct_message,direct_mention', function (bot, message) {
     
@@ -52,8 +52,4 @@ module.exports = function (controller) {
                 "Glad having been helped you",
                 "no");
         });
-    });
-
-    });
-};
-
+}
