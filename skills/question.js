@@ -1,4 +1,4 @@
-controller.hears(['/question me\b/'], 'message_received', function(bot,message) {
+controller.hears(['/question me\b/'], 'message_received,direct_message,direct_mention', function(bot,message) {
 
  bot.createConversation(message, function(err, convo) {
 
