@@ -15,13 +15,11 @@ module.exports = function (controller) {
               }
             });
         
-         bot.startConversation(message, function (err, convo) {
-            controller.hears(['Do you want more details? (Please, choose yes|no)'], 'message_received', function(bot,message) {
-                
+        
                   // start a conversation to handle this response.
                   bot.startConversation(message,function(err,convo) {
                 
-                    convo.ask('Shall we proceed Say YES, NO or DONE to quit.',[
+                    convo.ask('Do you want more details? (Please, choose yes|no)',[
                       {
                         pattern: 'done',
                         callback: function(response,convo) {
@@ -58,7 +56,7 @@ module.exports = function (controller) {
                 
                   })
                 
-                });
-            })
-        }
+               
+            }
+        
     }
