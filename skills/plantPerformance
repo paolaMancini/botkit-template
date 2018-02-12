@@ -1,6 +1,6 @@
 module.exports = function (controller) {
     
-        controller.hears([/plant performance\b/], 'direct_message,direct_mention', function(bot, message)) {
+        controller.hears( [/plant performance\b/], 'direct_message,direct_mention', function(bot, message){
 
             var request = require('request');
             request('http://194.79.57.109:8080/SFapi/machines', function(error, response, body) {
@@ -26,5 +26,5 @@ module.exports = function (controller) {
                 });
             });
     
-        });
-    };
+        } );
+    }
