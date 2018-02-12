@@ -16,15 +16,30 @@ module.exports = function (controller) {
 	            });
 	
 	             
-	        
-	            bot.startConversation(message, function (err, convo) {
-	              
-	    
-	                convo.ask('Do you want more details?', function (response, convo) {
-	                   // convo.say("Cool, I like '" + response.text + "' too!");
-	                    convo.next();
-	                });
-	            });
-	    
+		     
+		     bot.startConversation(message, function (err, convo) {
+
+			    convo.ask("Do you want more details?", [
+				{
+				    pattern: "^blue|green|pink|red|yellow$",
+				    callback: function (response, convo) {
+					convo.gotoThread("success");
+				    },
+				},
+				{
+				    default: true,
+				    callback: function (response, convo) {
+					convo.say("Sorry, I don't know this color. Try another one...");
+					convo.repeat();
+					convo.next();
+				    }
+				}
+			    ], { key: "answer" });
+
+			    // Success thread
+			    convo.addMessage(
+				"Cool, I love '{{responses.answer}}' too",
+				"success");
+			})  
 	        } );
 	    }
