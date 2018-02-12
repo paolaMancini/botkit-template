@@ -12,7 +12,7 @@ module.exports = function (controller) {
           var jsonData = JSON.parse(body);
           for (var i = 0; i < jsonData.counters.length; i++) {
               var counter = jsonData.counters[i];
-              console.log(counter.counter_name);
+              console.log(counter.machine);
           }
         });
     
