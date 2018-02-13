@@ -3,7 +3,8 @@ var backendRestClient = require("./backendRestClient.js");
 var data=backendRestClient.jsonAllData;
 var machinesList=backendRestClient.machs;
 
-module.exports = function (controller) {  
+module.exports = function (controller) {
+	controller.hears( [/line performance\b/], 'direct_message,direct_mention', function(bot, message){
 	 for (var i = 0; i < data.machines.length; i++) {
 		     
 		     var mpattern=machinesList.join("|");
@@ -42,5 +43,6 @@ module.exports = function (controller) {
 			})  
 	        } );
 	    }
+	}
  
 
