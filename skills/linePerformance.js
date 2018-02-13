@@ -1,6 +1,6 @@
-
+var request = require('request');
 module.exports = function (controller) {
-	   	var request = require('request');
+	   	
 	        controller.hears( [/line performance\b/], 'direct_message,direct_mention', function(bot, message){
 	
 	           
@@ -12,7 +12,7 @@ module.exports = function (controller) {
 	                var jsonData = JSON.parse(body);
 			 
 			var linea0 = jsonData.machines[0].machine;
-			  
+			 console.log("linea0= "+linea0; 
 	                //for (var i = 0; i < 7; i++) {
 	                    //var counter = jsonData.machines[i];
 	                    //console.log(jsonData.machines[i].machine);
