@@ -8,21 +8,19 @@ module.exports = function (controller) {
 	                console.log('error:', error); // Print the error if one occurred
 	                console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
 	                console.log('body:', body); // Print the HTML for the Google homepage.
+			    
+			   
 	
 	                var jsonData = JSON.parse(body);
-	                for (var i = 0; i < jsonData.length; i++) {
+			   var linea0 = jsonData.machines[0].machine;
+			    
+			var machines = jsonData.machines;
+			 
+			
+	                for (var i = 0; i < 7; i++) {
 	                    //var counter = jsonData.machines[i];
-	                    console.log(jsonData[i].machine);
-				var output = '';
-
-				for (var i=0; i<jsonData['machines'].length; i++){
-				    var bit = jsonData['machines'][i];
-				    output += '[machine: "' + bit['machine'] +
-					'", alias: "' + bit['alias'] +
-					'", oee: "' + bit['oee'] +
-					']\n';
-				};
-	                }
+	                    console.log(jsonData.machines[i].machine);
+			}
 	            });
 	
 	             
