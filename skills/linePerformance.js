@@ -15,8 +15,8 @@ module.exports = function (controller) {
 			//console.log('linea0:' ,linea0); 
 	                for (var i = 0; i < jsonData.machines.length; i++) {
 	                    var machine = jsonData.machines[i].machine;
-			    var alias = jsonData.machines[i].machine;
-			    var oee = jsonData.machines[i].machine;
+			    var alias = jsonData.machines[i].alias;
+			    var oee = jsonData.machines[i].alias;
 			 
 	                    console.log(machine);
 			    console.log(alias);
