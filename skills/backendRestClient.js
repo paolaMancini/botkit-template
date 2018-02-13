@@ -8,7 +8,12 @@ var jsonAllData = allaMahcines = function(url) {
         console.log('body:', body); // Print the HTML for the Google homepage.
 
         var jsonData = JSON.parse(body);
-      for (var i = 0; i < jsonData.machines.length; i++) {
+      
+        return jsonData;
+    });
+}
+
+for (var i = 0; i < 7; i++) {
          var machine = jsonData.machines[i].machine;
          var oee = jsonData.machines[i].alias;
          var alias = jsonData.machines[i].alias;
@@ -17,9 +22,6 @@ var jsonAllData = allaMahcines = function(url) {
          console.log(alias);
          console.log(oee);
          machs.push(machine);
-        return jsonData;
-    });
 }
-
 module.exports.jsonAllData;
 module.exports.machs;
