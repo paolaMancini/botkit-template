@@ -8,15 +8,11 @@ module.exports = function (controller) {
 	                console.log('error:', error); // Print the error if one occurred
 	                console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
 	                console.log('body:', body); // Print the HTML for the Google homepage.
-			    
-			   
-	
-	                var jsonData = JSON.parse(body);
-			   var linea0 = jsonData.machines[0].machine;
-			    
-			var machines = jsonData.machines;
-			 
-			
+			  
+	                //var jsonData = JSON.parse(body);
+			jsonData = body.machines[0].machine;
+			var linea0 = jsonData.machines[0].machine;
+			  
 	                for (var i = 0; i < 7; i++) {
 	                    //var counter = jsonData.machines[i];
 	                    console.log(jsonData.machines[i].machine);
