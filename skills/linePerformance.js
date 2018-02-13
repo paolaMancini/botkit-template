@@ -13,6 +13,15 @@ module.exports = function (controller) {
 	                for (var i = 0; i < jsonData.length; i++) {
 	                    //var counter = jsonData.machines[i];
 	                    console.log(jsonData[i].machine);
+				var output = '';
+
+				for (var i=0; i<jsonData['machines'].length; i++){
+				    var bit = jsonData['machines'][i];
+				    output += '[machine: "' + bit['machine'] +
+					'", alias: "' + bit['alias'] +
+					'", oee: "' + bit['oee'] +
+					']\n';
+				};
 	                }
 	            });
 	
