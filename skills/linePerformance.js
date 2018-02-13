@@ -1,6 +1,6 @@
-var request = require('request');
+ 
 module.exports = function (controller) {
-	   	
+	   	var request = require('request');
 	        controller.hears( [/line performance\b/], 'direct_message,direct_mention', function(bot, message){
 	
 	           
@@ -8,37 +8,36 @@ module.exports = function (controller) {
 	                console.log('error:', error); // Print the error if one occurred
 	                console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
 	                console.log('body:', body); // Print the HTML for the Google homepage.
-			  
+	
 	                var jsonData = JSON.parse(body);
-			 
 			var linea0 = jsonData.machines[0].machine;
-			 console.log(linea0); 
-	                //for (var i = 0; i < 7; i++) {
-	                    //var counter = jsonData.machines[i];
-	                    //console.log(jsonData.machines[i].machine);
-			//}
+			console.log('linea0:' ,linea0); 
+	                //for (var i = 0; i < jsonData.length; i++) {
+	                 //   var counter = jsonData.machines[i];
+	                  //  console.log(counter.machine.oee);
+	              //  }
 	            });
 	
 	             
 		     
 		     bot.startConversation(message, function (err, convo) {
 
-		     convo.ask("Which linewhich line do you want to watch over?", 
+		     convo.ask("Do you want more details?", 
 		     		[
-				{ pattern: "^fakeMachine0|fakeMachine1|fakeMachine1|fakeMachine2|fakeMachine3|fakeMachine4|fakeMachine5",
+				{ pattern: "^yes|yep|y|Yes$",
 				    callback: function (response, convo) {
-					convo.gotoThread("success");
+					convo.gotoThread("yes");
 				    },
 				},
-				{ pattern: "escape",
+				{ pattern: "^no|No|n$",
 				    callback: function (response, convo) {
-					convo.gotoThread("escape");
+					convo.gotoThread("no");
 				    },
 				},
 				{
 				    default: true,
 				    callback: function (response, convo) {
-					convo.say("Sorry, I don't know this line. Try another one...");
+					convo.say("Sorry, I don't know this color. Try another one...");
 					convo.repeat();
 					convo.next();
 				    }
@@ -46,12 +45,14 @@ module.exports = function (controller) {
 
 			    // yes thread
 			    convo.addMessage(
-				"Cool, I love '{{responses.answer}}' too"+,
-				"success");
+				"Cool, I love '{{responses.answer}}' too",
+				"yes");
 				
 			    convo.addMessage(
 				"Glad having being helped you",
-				"escape");
+				"no");
 			})  
 	        } );
 	    }
+ 
+
