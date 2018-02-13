@@ -11,8 +11,8 @@ module.exports = function (controller) {
 	
 	                var jsonData = JSON.parse(body);
 	                for (var i = 0; i < jsonData.length; i++) {
-	                    var counter = jsonData.machines[i];
-	                    console.log(counter.machine);
+	                    //var counter = jsonData.machines[i];
+	                    console.log(jsonData.machine);
 	                }
 	            });
 	
