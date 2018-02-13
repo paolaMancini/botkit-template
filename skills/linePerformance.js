@@ -2,7 +2,8 @@
 module.exports = function (controller) {
 	   	var request = require('request');
 	        controller.hears( [/line performance\b/], 'direct_message,direct_mention', function(bot, message){
-	
+		 
+		
 	           
 	            request('http://194.79.57.109:8080/SFapi/machines', function(error, response, body) {
 	                console.log('error:', error); // Print the error if one occurred
@@ -10,12 +11,17 @@ module.exports = function (controller) {
 	                console.log('body:', body); // Print the HTML for the Google homepage.
 	
 	                var jsonData = JSON.parse(body);
-			var linea0 = jsonData.machines[0].machine;
-			console.log('linea0:' ,linea0); 
-	                //for (var i = 0; i < jsonData.length; i++) {
-	                 //   var counter = jsonData.machines[i];
-	                  //  console.log(counter.machine.oee);
-	              //  }
+			//var linea0 = jsonData.machines[0].machine;
+			//console.log('linea0:' ,linea0); 
+	                for (var i = 0; i < jsonData.machines.length; i++) {
+	                    var machine = jsonData.machines[i].machine;
+			    var alias = jsonData.machines[i].machine;
+			    var oee = jsonData.machines[i].machine;
+			 
+	                    console.log(machine);
+			    console.log(alias);
+			    console.log(oee);
+	               }
 	            });
 	
 	             
