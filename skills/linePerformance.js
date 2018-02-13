@@ -6,7 +6,7 @@ var machinesList=backendRestClient.machs;
 module.exports = function (controller) {  
 	 for (var i = 0; i < data.machines.length; i++) {
 		     
-		     var mpattern=mahcinesList.join("|");
+		     var mpattern=machinesList.join("|");
 		     console.log('mpattern:',mpattern);
 		     bot.startConversation(message, function (err, convo) {
 
