@@ -1,7 +1,7 @@
 
 module.exports = function (controller) {
 	   	var request = require('request');
-	        controller.hears( [/line\b/], 'direct_message,direct_mention', function(bot, message){
+	        controller.hears( [/line performance\b/], 'direct_message,direct_mention', function(bot, message){
 	
 	           
 	            request('http://194.79.57.109:8080/SFapi/machines', function(error, response, body) {
@@ -20,22 +20,22 @@ module.exports = function (controller) {
 		     
 		     bot.startConversation(message, function (err, convo) {
 
-		     convo.ask("Do you want more details?", 
+		     convo.ask("Which linewhich line do you want to watch over?", 
 		     		[
-				{ pattern: "^yes|yep|y|Yes$",
+				{ pattern: "^fakeMachine0|fakeMachine1|fakeMachine1|fakeMachine2|fakeMachine3|fakeMachine4|fakeMachine5",
 				    callback: function (response, convo) {
-					convo.gotoThread("yes");
+					convo.gotoThread("success");
 				    },
 				},
-				{ pattern: "^no|No|n$",
+				{ pattern: "escape",
 				    callback: function (response, convo) {
-					convo.gotoThread("no");
+					convo.gotoThread("escape");
 				    },
 				},
 				{
 				    default: true,
 				    callback: function (response, convo) {
-					convo.say("Sorry, I don't know this color. Try another one...");
+					convo.say("Sorry, I don't know this line. Try another one...");
 					convo.repeat();
 					convo.next();
 				    }
@@ -43,12 +43,12 @@ module.exports = function (controller) {
 
 			    // yes thread
 			    convo.addMessage(
-				"Cool, I love '{{responses.answer}}' too",
-				"yes");
+				"Cool, I love '{{responses.answer}}' too"+,
+				"success");
 				
 			    convo.addMessage(
 				"Glad having being helped you",
-				"no");
+				"escape");
 			})  
 	        } );
 	    }
