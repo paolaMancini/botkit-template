@@ -1,5 +1,5 @@
 module.exports = function (controller) {
-	
+	var request = require('request');
 			controller.hears([/^plant performance/], "direct_message,direct_mention", function (bot, message) {
 				request('http://194.79.57.109:8080/SFapi/machines', function(error, response, body) {
 				console.log('error:', error); // Print the error if one occurred
