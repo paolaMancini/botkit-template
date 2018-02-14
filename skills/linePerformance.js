@@ -2,7 +2,7 @@ module.exports = function (controller) {
 	              var request = require('request');
 	               controller.hears( [/line\b/], 'direct_message,direct_mention', function(bot, message){
 	           
-	                   request('http://194.79.57.109:8080/SFapi/machines', function(error, response, body) {
+	                   request('http://194.79.57.109:8080/SFapi/status?machine=', function(error, response, body) {
 	                       console.log('error:', error); // Print the error if one occurred
 	                       console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
 	                       console.log('body:', body); // Print the HTML for the Google homepage.
@@ -49,7 +49,7 @@ module.exports = function (controller) {
 	
 	                         // yes thread
 	                         convo.addMessage(
-	                           "Cool, I love '{{responses.answer}}' too",
+				   "The '{{responses.answer}}' ha the following performance values:\nAvailability:77.49%\nQuality:97.29\nPerformance:67.7
 	                           "yes");
 	                           
 	                         convo.addMessage(
