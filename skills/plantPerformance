@@ -14,6 +14,7 @@ module.exports = function (controller) {
 	                var jsonData = JSON.parse(body);
 			for (var i = 0; i <jsonData.machines.lenght ; i++) {
 				 machs.push(jsonData.machines[i].machine);
+				 
 				 //var machine = jsonData.machines[i].machine;
 				 //var oee = jsonData.machines[i].alias;
 				 //var alias = jsonData.machines[i].alias;
@@ -24,7 +25,10 @@ module.exports = function (controller) {
 				 //console.log(oee);
 				 //machs.push(machine);
 			}
+			console.log('macs: ',macs);
 			mpattern=machs.join("|");
+			console.log('mpattern: ',mpattern);
+			
 
 	            });
 	
