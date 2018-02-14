@@ -29,8 +29,7 @@ module.exports = function (controller) {
 
 	            });
 	
-	             
-		     //console.log('mpattern:',mpattern);
+	             		     //console.log('mpattern:',mpattern);
 		     bot.startConversation(message, function (err, convo) {
 
 		     convo.ask("Do you want more details?", 
