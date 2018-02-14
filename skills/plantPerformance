@@ -8,10 +8,9 @@ module.exports = function (controller) {
 	                console.log('error:', error); // Print the error if one occurred
 	                console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
 	                console.log('body:', body); // Print the HTML for the Google homepage.
-			var mpattern;
-			var machs=[];
+			 
 	                var jsonData = JSON.parse(body);
-			for (var i = 0; i <jsonData.machines.lenght ; i++) {
+			//for (var i = 0; i <jsonData.machines.lenght ; i++) {
 			  	  
 				 //machs.push(jsonData.machines[i].machine);
 				 //console.log('machine: ',machine);
@@ -22,10 +21,10 @@ module.exports = function (controller) {
 				 //console.log(alias);
 				 //console.log(oee);
 				 //machs.push(machine);
-				 console.log('macs: ',macs);
+				// console.log('macs: ',macs);
 				//mpattern=machs.join("|");
 				//console.log('mpattern: ',mpattern);
-			}
+			//}
 
 	            });
 	
@@ -56,7 +55,7 @@ module.exports = function (controller) {
 			    // yes thread
 			    convo.addMessage(
 				//"Cool, I love '{{responses.answer}}' too",
-				"Which line do you want to whatc over?",
+				"Which line do you want to watch over? (Please, specify 'line <name of line>)",
 				"yes");
 				
 			    convo.addMessage(
@@ -65,5 +64,4 @@ module.exports = function (controller) {
 			   
 	        } );
 	   }
-	}    
- 
+	}  
