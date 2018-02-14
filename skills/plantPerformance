@@ -12,16 +12,16 @@ module.exports = function (controller) {
 	                console.log('body:', body); // Print the HTML for the Google homepage.
 			
 	                var jsonData = JSON.parse(body);
-			for (var i = 0; i <7 ; i++) {
-			  	 var machine = jsonData.machines[i].machine;
-				 machs.push(machine);
+			for (var i = 0; i <jsonData.machines.lenght ; i++) {
+			  	  
+				 machs.push(jsonData.machines[i].machine);
 				 
 				
 				 //var oee = jsonData.machines[i].alias;
 				 //var alias = jsonData.machines[i].alias;
 
 
-				 console.log('machine: ',machine);
+				 //console.log('machine: ',machine);
 				 //console.log(alias);
 				 //console.log(oee);
 				 //machs.push(machine);
