@@ -21,7 +21,7 @@ module.exports = function (controller) {
 				 //var alias = jsonData.machines[i].alias;
 
 
-				 console.log(machine);
+				 console.log('machine: ',machine);
 				 //console.log(alias);
 				 //console.log(oee);
 				 //machs.push(machine);
