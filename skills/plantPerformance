@@ -13,14 +13,15 @@ module.exports = function (controller) {
 			
 	                var jsonData = JSON.parse(body);
 			for (var i = 0; i <7 ; i++) {
-				 machs.push(jsonData.machines[i].machine);
+			  	 var machine = jsonData.machines[i].machine;
+				 machs.push(machine);
 				 
-				 //var machine = jsonData.machines[i].machine;
+				
 				 //var oee = jsonData.machines[i].alias;
 				 //var alias = jsonData.machines[i].alias;
 
 
-				 //console.log(machine);
+				 console.log(machine);
 				 //console.log(alias);
 				 //console.log(oee);
 				 //machs.push(machine);
