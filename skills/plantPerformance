@@ -13,8 +13,8 @@ module.exports = function (controller) {
 	                var jsonData = JSON.parse(body);
 			for (var i = 0; i <jsonData.machines.lenght ; i++) {
 			  	  
-				 machs.push(jsonData.machines[i].machine);
-				 console.log('machine: ',machine);
+				 //machs.push(jsonData.machines[i].machine);
+				 //console.log('machine: ',machine);
 				
 				 //var oee = jsonData.machines[i].alias;
 				 //var alias = jsonData.machines[i].alias;
@@ -23,14 +23,14 @@ module.exports = function (controller) {
 				 //console.log(oee);
 				 //machs.push(machine);
 				 console.log('macs: ',macs);
-				mpattern=machs.join("|");
-				console.log('mpattern: ',mpattern);
+				//mpattern=machs.join("|");
+				//console.log('mpattern: ',mpattern);
 			}
 
 	            });
 	
 	             
-		     console.log('mpattern:',mpattern);
+		     //console.log('mpattern:',mpattern);
 		     bot.startConversation(message, function (err, convo) {
 
 		     convo.ask("Do you want more details?", 
@@ -67,15 +67,4 @@ module.exports = function (controller) {
 	        } );
 	   }
 	    
-function showLinePerformance(skill, bot, message) {
-     
-    var skill_source = skill + ".js";
-
-     
-     
-
-        // Post file contents back to Cisco Spark
-        var code = "```javascript\n" + data + "\n```";
-        bot.reply(message, code);
-    });
-}
+ 
