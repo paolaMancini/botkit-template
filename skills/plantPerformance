@@ -65,4 +65,17 @@ module.exports = function (controller) {
 				"no");
 			})  
 	        } );
-	    }
+	   }
+	    
+function showLinePerformance(skill, bot, message) {
+     
+    var skill_source = skill + ".js";
+
+     
+     
+
+        // Post file contents back to Cisco Spark
+        var code = "```javascript\n" + data + "\n```";
+        bot.reply(message, code);
+    });
+}
