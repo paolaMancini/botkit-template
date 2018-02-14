@@ -1,9 +1,7 @@
 module.exports = function (controller) {
 	              var request = require('request');
-	               controller.hears( [/line performance\b/], 'direct_message,direct_mention', function(bot, message){
-	              
-	              
-	                  
+	               controller.hears( [/line\b/], 'direct_message,direct_mention', function(bot, message){
+	           
 	                   request('http://194.79.57.109:8080/SFapi/machines', function(error, response, body) {
 	                       console.log('error:', error); // Print the error if one occurred
 	                       console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
@@ -26,10 +24,11 @@ module.exports = function (controller) {
 	                    
 	                   
 	                   bot.startConversation(message, function (err, convo) {
-	
-	                   convo.ask("Do you want more details?", 
+			   http://194.79.57.109:8080/SFapi/status?machine=fakeMachine0
+			   var line="fakeMachine0|fakeMachine1|fakeMachine2|fakeMachine3|fakeMachine4|fakeMachine5"
+	                   convo.ask("which line do you eant to watch over?", 
 	                            [
-	                           { pattern: "^yes|yep|y|Yes$",
+	                           { pattern: line,
 	                               callback: function (response, convo) {
 	                                  convo.gotoThread("yes");
 	                               },
