@@ -1,7 +1,7 @@
 module.exports = function (controller) {
 	             // var request = require('request');
 	               controller.hears( [/(plant)( [a-zA-Z0-9]{1,})|(performance)/], 'direct_message,direct_mention', function(bot, message){
-	              console.log(message);
+	              console.log('message: ',message);
 	              
 	                  
 // request('http://194.79.57.109:8080/SFapi/machines', function(error, response,
