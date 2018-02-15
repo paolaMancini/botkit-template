@@ -9,7 +9,7 @@ module.exports = function (controller, bot) {
     var botcommons = {
 
         // Bot description
-        "description": "It's an awesome bot for sure!",
+        "description": "It's the Italtel IndyChatBot for Rold SmatFab!",
 
         // Where to get more information about the bot
         //"url": "https://github.com/CiscoDevNet/botkit-template",
@@ -21,7 +21,7 @@ module.exports = function (controller, bot) {
         //"support-contact": "Stève Sfartz <mailto:stsfartz@cisco.com>",
 
         // Messaging platform
-        "plaform": bot.type,
+        //"plaform": bot.type,
 
         // the precise bot identity is loaded asynchronously, as /people/me request - issued by "BotKit CiscoSparkBot.js" - returns
         //"identity": "unknown",
@@ -30,7 +30,7 @@ module.exports = function (controller, bot) {
         //"healthcheck": "https://" + controller.config.public_address + process.env.HEALTHCHECK_ROUTE,
 
         // BotCommons specifications version (should be an href)
-        "botcommons": "draft",
+        //"botcommons": "draft",
     }
 
     //
