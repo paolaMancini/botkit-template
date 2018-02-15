@@ -7,8 +7,9 @@
 //
 module.exports = function (controller) {
 
-    controller.hears(['cheese'], 'direct_message,direct_mention', function (bot, message) {
-
+   // controller.hears(['cheese'], 'direct_message,direct_mention', function (bot, message) {
+   controller.hears([/OEE\b/], 'direct_message,direct_mention', function (bot, message) {
+ 
         bot.startConversation(message, function (err, convo) {
 
             // create a path for when a user says YES
