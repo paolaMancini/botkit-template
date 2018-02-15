@@ -12,22 +12,22 @@ module.exports = function (controller, bot) {
         "description": "It's an awesome bot for sure!",
 
         // Where to get more information about the bot
-        "url": "https://github.com/CiscoDevNet/botkit-template",
+        //"url": "https://github.com/CiscoDevNet/botkit-template",
 
         // Legal owner
-        "legal-owner": "Cisco DevNet <https://developer.cisco.com>",
+        //"legal-owner": "Cisco DevNet <https://developer.cisco.com>",
 
         // Contact name for support
-        "support-contact": "Stève Sfartz <mailto:stsfartz@cisco.com>",
+        //"support-contact": "Stève Sfartz <mailto:stsfartz@cisco.com>",
 
         // Messaging platform
         "plaform": bot.type,
 
         // the precise bot identity is loaded asynchronously, as /people/me request - issued by "BotKit CiscoSparkBot.js" - returns
-        "identity": "unknown",
+        //"identity": "unknown",
 
         // Endpoint where to check the bot is alive
-        "healthcheck": "https://" + controller.config.public_address + process.env.HEALTHCHECK_ROUTE,
+        //"healthcheck": "https://" + controller.config.public_address + process.env.HEALTHCHECK_ROUTE,
 
         // BotCommons specifications version (should be an href)
         "botcommons": "draft",
@@ -52,12 +52,7 @@ module.exports = function (controller, bot) {
 
         // Return metadata
         var metadata = '{\n'
-            + '   "description" : "' + botcommons["description"] + '",\n'
-            + '   "url"         : "' + botcommons["url"] + '",\n'
-            + '   "owner"       : "' + botcommons["legal-owner"] + '",\n'
-            + '   "support"     : "' + botcommons["support-contact"] + '",\n'
-            + '   "healthcheck" : "' + botcommons["healthcheck"] + '",\n'
-            + '}\n';
+            + '   "description" : "' + botcommons["description"] + '",\n';
 
         bot.reply(message, '```json\n' + metadata + '\n```');
     });
