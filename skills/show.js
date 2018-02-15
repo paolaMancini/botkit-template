@@ -1,57 +1,74 @@
-//
-// Displays the code of the specified skill
-//
 module.exports = function (controller) {
-
-    controller.hears([/^show\s*(.*)$/, /^code\s*(.*)$/], 'direct_message,direct_mention', function (bot, message) {
-
-        // Fetch value argument
-        var skill = message.match[1];
-        if (skill) {
-            showSkill(skill, bot, message);
-            return;
-        }
-
-        bot.startConversation(message, function (err, convo) {
-
-            convo.ask("Please choose a skill among 'color', 'restricted', 'show', 'storage', 'threads', 'variables', 'about', 'join', 'help'", [
-                {
-                    pattern: "^color|restricted|show|storage|threads|variables|about|join|help$",
-                    callback: function (response, convo) {
-                        // ends current conversation
-                        convo.stop();
-
-                        showSkill(response.text, bot, message);
-                        return;
-                    },
-                },
-                {
-                    default: true,
-                    callback: function (response, convo) {
-                        convo.say("Sorry, this skill is not correct. Try again...");
-                        convo.repeat();
-                        convo.next();
-                    }
-                }
-            ]);
-        });
-    });
-};
-
-function showSkill(skill, bot, message) {
-    // Append .js extension
-    var skill_source = skill + ".js";
-
-    // Read file contents
-    var normalizedPath = require("path").join(__dirname, skill_source);
-    require("fs").readFile(normalizedPath, 'utf8', function (err, data) {
-        if (err) {
-            bot.reply(message, "Could not find code for skill '" + skill + "'. Try again with another skill name...");
-            return;
-        }
-
-        // Post file contents back to Cisco Spark
-        var code = "```javascript\n" + data + "\n```";
-        bot.reply(message, code);
-    });
+	
+	// controller.hears(['cheese'], 'direct_message,direct_mention',
+	// function (bot, message) {
+	controller.hears([/OEE\s*$/], 'direct_message,direct_mention', function (bot, message) {
+		
+		var lines= ["fakeMachine0","fakeMachine1","fakeMachine2","fakeMachine3","fakeMachine4","fakeMachine5","fakeMachine6"];
+		
+		for (index = 0; index < a.length; ++index) {
+			// Fetch value argument
+			if(message[0].contains(entry)){
+			   	convo.say('The OEE value is: 44.57%');
+			}else{
+				bot.startConversation(message, function (err, convo) {
+	
+				// create a path for when a user says YES
+				convo.addMessage({
+					text: 'How wonderful.',
+				}, 'yes_thread');
+	
+				// create a path for when a user says NO
+				// mark the conversation as unsuccessful at the end
+				convo.addMessage({
+					text: 'Glad having being helped you',
+					action: 'stop', // this marks the converation as unsuccessful
+				}, 'no_thread');
+	
+				// create a path where neither option was matched
+				// this message has an action field, which directs botkit to
+				// go back to the `default` thread after sending this
+				// message.
+				convo.addMessage({
+					text: 'Sorry I did not understand. Plese choose the line: fakeMachine0,fakeMachine1,fakeMachine2,fakeMachine3,fakeMachine4,fakeMachine5,fakeMachine6',
+					action: 'default',
+			    }, 'bad_response');
+	
+				// Create a yes/no question in the default thread...
+				convo.ask('Which line are you interested of?', [{
+						 pattern:'fakeMachine0|fakeMachine1|fakeMachine2|fakeMachine3|fakeMachine4|fakeMachine5|fakeMachine6',
+						 callback: function (response, convo) {
+							 convo.gotoThread('yes_thread');
+						 },	
+				},
+				{
+						pattern: 'no-line',
+						callback: function (response, convo) {
+							convo.gotoThread('no_thread');
+						},
+				},
+				{
+						default: true,
+						callback: function (response, convo) {
+							convo.gotoThread('bad_response');
+						},
+					
+				}]);
+	
+				// capture the results of the conversation and see what
+				// happened...
+				convo.on('end', function (convo) {
+	
+					if (convo.successful()) {
+					 	// this still works to send individual replies...
+						bot.reply(message, 'Let us eat some!');
+					}					
+				});
+			 });
+				
+		 
+		};
+	   };
+		 
+	});
 }
