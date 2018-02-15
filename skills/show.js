@@ -6,9 +6,9 @@ module.exports = function (controller) {
 		
 		var lines= ["fakeMachine0","fakeMachine1","fakeMachine2","fakeMachine3","fakeMachine4","fakeMachine5","fakeMachine6"];
 		
-		for (index = 0; index < a.length; ++index) {
+		for (index = 0; index < lines.length; ++index) {
 			// Fetch value argument
-			if(message[0].contains(entry)){
+			if(message[0].contains(lines[index])){
 			   	convo.say('The OEE value is: 44.57%');
 			}else{
 				bot.startConversation(message, function (err, convo) {
