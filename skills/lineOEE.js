@@ -1,7 +1,13 @@
 
- module.exports = function (controller) {
+ //
+// cheese: demonstrates simple use of Botkit's thread conversation system.
+//
+// In this example, Botkit hears a keyword, then asks a question. Different paths
+// through the conversation are chosen based on the user's response.
+//
+module.exports = function (controller) {
 
-    controller.hears([/^which is the OEE value about the line fakeMachine0$/'], 'direct_message,direct_mention', function (bot, message) {
+    controller.hears(['cheese'], 'direct_message,direct_mention', function (bot, message) {
 
         bot.startConversation(message, function (err, convo) {
 
@@ -59,4 +65,3 @@
         });
     });
 };
-© 2018 GitHub, Inc.
