@@ -34,7 +34,7 @@ module.exports = function (controller) {
             // Create a yes/no question in the default thread...
             convo.ask('Which line are you interested of?', [
                 {
-                    pattern:'fakeMachine0,fakeMachine1,fakeMachine2,fakeMachine3,fakeMachine4,fakeMachine5,fakeMachine6',
+                    pattern:'fakeMachine0,fakeMachine1|fakeMachine2|fakeMachine3|fakeMachine4|fakeMachine5|fakeMachine6',
                     callback: function (response, convo) {
                         convo.gotoThread('yes_thread');
                     },
