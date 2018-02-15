@@ -2,15 +2,11 @@ module.exports = function (controller) {
 	
 	// controller.hears(['cheese'], 'direct_message,direct_mention',
 	// function (bot, message) {
-	controller.hears(['OEE'], 'direct_message,direct_mention', function (bot, message) {
+	controller.hears([/OEE\s*$/], 'direct_message,direct_mention', function (bot, message) {
 		
 		var lines= ["fakeMachine0","fakeMachine1","fakeMachine2","fakeMachine3","fakeMachine4","fakeMachine5","fakeMachine6"];
 		
-		for (index = 0; index < lines.length; ++index) {
-			// Fetch value argument
-			if(message[0].contains(lines[index])){
-			   	convo.say('The OEE value is: 44.57%');
-			}else{
+		 
 				bot.startConversation(message, function (err, convo) {
 	
 				// create a path for when a user says YES
@@ -22,7 +18,8 @@ module.exports = function (controller) {
 				// mark the conversation as unsuccessful at the end
 				convo.addMessage({
 					text: 'Glad having being helped you',
-					action: 'stop', // this marks the converation as unsuccessful
+					action: 'stop', // this marks the converation as
+									// unsuccessful
 				}, 'no_thread');
 	
 				// create a path where neither option was matched
@@ -65,10 +62,5 @@ module.exports = function (controller) {
 					}					
 				});
 			 });
-				
-		 
-		};
-	   };
-		 
 	});
 }
