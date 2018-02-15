@@ -1,6 +1,6 @@
 module.exports = function (controller) {
 	             // var request = require('request');
-	               controller.hears( [/plant performance\b/], 'direct_message,direct_mention', function(bot, message){
+	               controller.hears( [/plant\b/], 'direct_message,direct_mention', function(bot, message){
 	              
 	              
 	                  
