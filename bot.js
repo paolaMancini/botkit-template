@@ -56,6 +56,14 @@ var controller = Botkit.sparkbot({
     secret: process.env.SECRET, // this is a RECOMMENDED security setting that checks of incoming payloads originate from Cisco Spark
     webhook_name: process.env.WEBHOOK_NAME || ('built with BotKit (' + env + ')')
 });
+var options = {
+    dialogflow_token: process.env.dialogflow,
+};
+var dialogflowMiddleware = require('botkit-middleware-dialogflow')(options);
+var bot = controller.spawn({
+});
+controller.middleware.receive.use(dialogflowMiddleware.receive);
+//bot.startRTM();
 
 var bot = controller.spawn({
 });
