@@ -17,3 +17,12 @@ module.exports = function(controller) {
         bot.reply(message, chosen_message);
     });
 }
+module.exports = function(controller) {
+
+    controller.hears(['hello | hi'], 'direct_message,direct_mention', function(bot, message) {
+        console.log('message.data.personEmail: ', message.personEmail);
+        var mardown = "This is Clavigero, the Keys' Keeper. I can help you to get the link to click by your phone or your tablet in orden to open your JAGO door lock.";
+         
+        bot.reply(message, mardown);
+    });
+}
