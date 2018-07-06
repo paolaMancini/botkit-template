@@ -1,5 +1,5 @@
 
- var jagoAPIs = require("./JagoApiCalls");
+ var jagoAPIs = require("./JagoPIsCalls");
 
  module.exports = function(controller) {
   
