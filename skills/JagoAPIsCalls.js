@@ -2,7 +2,7 @@
 var debug = require("debug")("samples");
 var fine = require("debug")("samples:fine");
 
-module.exports.fetchMachines = function(username,fname,uTagId, fromTime, toTime, cb) {
+module.exports.POSTuser = function(username,fname,uTagId, fromTime, toTime, cb) {
     var request = require("request");
     
     var options = {
