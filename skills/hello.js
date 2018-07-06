@@ -3,6 +3,7 @@ module.exports = function(controller) {
 
     controller.hears(['hello| hi'], 'direct_message,direct_mention', function(bot, message) {
         var mardown = "This is Clavigero, the Keys' Keeper. I can help you to get the link to click by your phone or your tablet in orden to open your JAGO door lock.";
+        console.log('message: ', message);
          var message_options = [
             "Hello",
             "Hi" 
