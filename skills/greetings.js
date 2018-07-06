@@ -5,7 +5,7 @@ module.exports = function(controller) {
             "Fine thanks!",
             "Very well, thank you.",
             "Not so bad, thanks for asking.",
-            "Very good, thank you.",
+            "Very good, thank you."
         ]
         
         var random_index = Math.floor(Math.random() * message_options.length)
