@@ -37,6 +37,10 @@ module.exports = function(controller) {
             if (error) throw new Error(error);
 
             console.log('body: ',body);
+            console.log('###################');
+            var dateFormat = require('dateformat');
+            var day=dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
+            console.log('day: ',day);
             var publicLink=body.publicLink;
             bot.reply(message, "click on "+publicLink+"  from your Otello App to access the room");
         });
