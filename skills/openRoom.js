@@ -40,9 +40,9 @@ module.exports = function(controller) {
 
             console.log('body: ',body);
             console.log('###################');
-            var dateFormat = require('dateformat');
-            var day=dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
-            console.log('day: ',day);
+            //var dateFormat = require('dateformat');
+            //var day=dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
+            //console.log('day: ',day);
             var publicLink=body.publicLink;
             bot.reply(message, "click on "+publicLink+"  from your Otello App to access the room");
         });
