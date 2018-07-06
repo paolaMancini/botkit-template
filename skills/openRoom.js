@@ -1,5 +1,5 @@
 
- 
+ var Events = require("./events");
  module.exports = function(controller) {
    controller.hears([/'open|access'/i], ['direct_message', 'direct_mention', 'mention'], function(bot, message) {
     POSTuser = function(username, fname, uTagId, fromTime, toTime, cb) {
