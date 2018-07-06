@@ -2,7 +2,7 @@
  
 module.exports = function(controller) {
 
-    controller.hears(['hello | hi'], 'direct_message,direct_mention', function(bot, message) {
+    controller.hears(['hello|hi'], 'direct_message,direct_mention', function(bot, message) {
       console.log('message: ', message);
        console.log('message.data.personEmail: ', message.personEmail);   
        var message_options = [
