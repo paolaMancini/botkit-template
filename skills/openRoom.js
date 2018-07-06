@@ -38,7 +38,7 @@ module.exports = function(controller) {
 
             console.log('body: ',body);
             var publicLink=body.publicLink;
-            bot.reply(message, "click on "+publicLink+"from ypur Otello App to acess room");
+            bot.reply(message, "click on "+publicLink+"  from your Otello App to access the room");
         });
         
        
