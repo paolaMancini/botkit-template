@@ -57,7 +57,7 @@ var controller = Botkit.sparkbot({
     webhook_name: process.env.WEBHOOK_NAME || ('built with BotKit (' + env + ')')
 });
 var options = {
-    dialogflow_token: process.env.dialogflow,
+    dialogflow_token: process.env.dialogflow
 };
 var dialogflowMiddleware = require('botkit-middleware-dialogflow')(options);
 var bot = controller.spawn({
