@@ -29,9 +29,9 @@ module.exports = function(controller) {
                         userTagIds: [],
                         userTagIdsWithTime: [{
                             id: 3513,
-                            interval: { from: 1530796020000, to: 1530835140000 }
+                             interval: { from: 1530867587000, to: 1530889200000 }
                         }],
-                        username: 'italtelUser1'
+                        username: 'u1'
                     },
                     json: true
                 };
@@ -40,6 +40,11 @@ module.exports = function(controller) {
                     if (error) throw new Error(error);
 
                     console.log(body);
+                    var userDetails = JSON.parse(body);
+                    var publicLink = userDetail.publicLink;
+                    
+                 
+                    bot.reply(message, publicLink);
                 });
 
 
