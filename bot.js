@@ -59,14 +59,14 @@ var controller = Botkit.sparkbot({
 var options = {
     dialogflow_token: process.env.dialogflow
 };
+
 var dialogflowMiddleware = require('botkit-middleware-dialogflow')(options);
-var bot = controller.spawn({
-});
+
 controller.middleware.receive.use(dialogflowMiddleware.receive);
 //bot.startRTM();
 
 var bot = controller.spawn({
-});
+}); 
 
 
 //
