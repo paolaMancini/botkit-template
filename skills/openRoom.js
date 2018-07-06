@@ -17,8 +17,8 @@ module.exports = function(controller) {
             },
             body: {
                 "email": "string",
-                "firstname": "italtel-user",
-                "lastname": "italtel-user",
+                "firstname": "u1",
+                "lastname": "u1",
                 "password": "ita123",
                 "phone": "string",
                 "publicUser": true,
@@ -26,9 +26,9 @@ module.exports = function(controller) {
                 "userTagIds": [],
                 "userTagIdsWithTime": [{
                     "id": 3513,
-                    "interval": { "from": 1530796020000, "to": 1530835140000 }
+                    "interval": { "from": 1530889200000, "to": 1530903600000 }
                 }],
-                "username": "italtelUser1"
+                "username": "u1"
             },
             json: true
         };
@@ -36,9 +36,11 @@ module.exports = function(controller) {
         request(options, function(error, response, body) {
             if (error) throw new Error(error);
 
-            console.log(body);
+            console.log('body: ',body);
+            var publicLink=body.publicLink;
+            bot.reply(message, "click on "+publicLink+"from ypur Otello App to acess room");
         });
         
-        bot.reply(message, "finalmente");
+       
     });
 }
