@@ -26,8 +26,8 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
         role: 'ROLE_GUEST',
         userTagIds: [],
         userTagIdsWithTime: [{
-            id: 3513,
-            interval: { from: 1530867587000, to: 1530889200000 }
+            id: '3513',
+            interval: { from:'1530867587000', to: '1530889200000' }
         }],
         username: 'u1'
     }));
