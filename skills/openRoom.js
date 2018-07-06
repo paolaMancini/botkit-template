@@ -4,7 +4,10 @@
 module.exports = function(controller) {
 
         controller.hears([/'open|access'/i], ['direct_message', 'direct_mention', 'mention'], function(bot, message) {
-                jagoAPIs.POSTuser(username, fname, uTagId, fromTime, toTime, function(err, publickLink, text) {
+         
+         console.log('message: ', message);
+                //username, fname, uTagId, fromTime, toTime
+                jagoAPIs.POSTuser('u1', 'u1', '3513', null, null, function(err, publickLink, text) {
                     {
                         if (err) {
                             bot.reply(message, "Something went wrong during connection with JAGO system");
