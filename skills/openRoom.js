@@ -1,8 +1,10 @@
 
- var Events = require("./events");
+ var jagoAPIs = require("./JagoApiCalls");
+
  module.exports = function(controller) {
+  
    controller.hears([/'open|access'/i], ['direct_message', 'direct_mention', 'mention'], function(bot, message) {
-    POSTuser = function(username, fname, uTagId, fromTime, toTime, cb) {
+    jagoAPIs.POSTuser (username, fname, uTagId, fromTime, toTime, function(err, publickLink, text) {) {
         if (err) {
             bot.reply(message, "Something went wrong during connection with JAGO system");
             return;
@@ -13,7 +15,7 @@
             return;
         }
 
-        console.log("publickLink: ", publickLink);
+        console.log('publickLink: ', publickLink);
         text += "You are able to open the door by click on the following link from Otello App <br>";
 
         bot.reply(message, text);
