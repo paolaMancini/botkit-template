@@ -5,7 +5,7 @@ module.exports = function(controller) {
         console.log('message: ', message);
          
         var request = require("request");
-        var random_index = Math.floor(Math.);
+        var random_index = Math.floor(Math.random() * (1000 - 1) + 1);
         var user="u"+random_index;
 
         var options = {
@@ -40,9 +40,9 @@ module.exports = function(controller) {
 
             console.log('body: ',body);
             console.log('###################');
-            //var dateFormat = require('dateformat');
-            //var day=dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
-            //console.log('day: ',day);
+            var dateFormat = require('dateformat');
+            var day=dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
+            console.log('day: ',day);
             var publicLink=body.publicLink;
             bot.reply(message, "click on "+publicLink+"  from your Otello App to access the room");
         });
