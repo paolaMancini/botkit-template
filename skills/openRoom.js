@@ -5,6 +5,8 @@ module.exports = function(controller) {
         console.log('message: ', message);
          
         var request = require("request");
+        var random_index = Math.floor(Math.);
+        var user="u"+random_index;
 
         var options = {
             method: "POST",
@@ -16,9 +18,9 @@ module.exports = function(controller) {
                 "accept": "application/json"
             },
             body: {
-                "email": "string",
-                "firstname": "u1",
-                "lastname": "u1",
+                "email": user,
+                "firstname": user,
+                "lastname": user,
                 "password": "ita123",
                 "phone": "string",
                 "publicUser": true,
@@ -28,7 +30,7 @@ module.exports = function(controller) {
                     "id": 3513,
                     "interval": { "from": 1530889200000, "to": 1530903600000 }
                 }],
-                "username": "u1"
+                "username": user
             },
             json: true
         };
