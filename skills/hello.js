@@ -6,9 +6,9 @@ module.exports = function(controller) {
        console.log('message: ', message);
        console.log('message.data.personEmail: ', message.data.personEmail);
          var message_options = [
-            `Hello <@message.data.personEmail>!`,
-            `Hi <@message.data.personEmail>!`,
-            `So glad to meet you again  <@message.data.personEmail>!`
+            `Hello <message.data.personEmail>!`,
+            `Hi <message.data.personEmail>!`,
+            `So glad to meet you again  <message.data.personEmail>!`
              
         ]
 
