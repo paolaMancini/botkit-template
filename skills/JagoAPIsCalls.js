@@ -58,12 +58,16 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
             }
          
            
-         
+           var publicLink=null;
             for (var i = 0; i < numRec; i++) {
                  var current = body.tags[i];
-                 var publicLink=body.publicLink;
+                 publicLink=body.publicLink;
+                 console.log('body.tags[i].id: ',body.tags[i].id);
+                 console.log('body.tags[i].state: ',body.tags[i].state);
                  if (body.tags[i].id==uTagId && (body.tags[i].state=="VALID")){
                    var publicLink=body.publicLink;
+                  
+                  console.log('@@@@@@@@@@@@@@@ publicLink=publicLink');
                  }
                  
             }
