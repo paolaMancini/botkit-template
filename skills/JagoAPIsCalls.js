@@ -33,47 +33,25 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
         };
 
         request(options, function(error, response, body) {
-            if (error) throw new Error(error);
+            if (error) {
+            debug("1 could not retreive list of events, error: " + error);
+            cb(new Error("Could not retreive current events, sorry [Backend Events API not responding]"), null, null);
+            return;
+            }
+
+            if ((response < 200) || (response > 299)) {
+                debug("1 could not retreive list of events, response: " + response);
+
+                return;
+            }
 
             console.log('body: ',body);
             console.log('###################');
              
             var publicLink=body.publicLink;
+            msg += publicLink;
+
+           cb(null, body, msg);
     })
-    
-  
-    request(options, function(error, response, body) {
-        if (error) {
-            debug("1 could not retreive list of events, error: " + error);
-            cb(new Error("Could not retreive current events, sorry [Backend Events API not responding]"), null, null);
-            return;
-        }
-
-        if ((response < 200) || (response > 299)) {
-            debug("1 could not retreive list of events, response: " + response);
-
-            return;
-        }
-
-        var userDetail = JSON.parse(body);
-        //debug("fetched " + events.machines.length + " events");
-        //fine(JSON.stringify(events));
-
-        if (userDetail == null) {
-            cb(null, body, "**User not created.**");
-            return;
-        }
-        if (userDetail.publicLink == null) {
-            cb(null, body, "**Link not found.**");
-            return;
-        }
-
-        var publicLink = userDetail.publicLink;
-        var msg = "<br>";
-        msg += publicLink;
-
-        cb(null, body, msg);
-
-    });
-
+     
 };
