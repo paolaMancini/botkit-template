@@ -46,12 +46,9 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
                 return;
             }
 
-         
-            
+           
             console.log('events: ',events);
             console.log('###################');
-         
-            
           
             var numRec = events.tags.length;
          
