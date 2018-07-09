@@ -20,9 +20,9 @@ module.exports = function(controller) {
                 return;
             }
 
-            publcLink = data.publicLink;
-            console.log("publcLink: ", publcLink);
-            console.log("publcLink: ", publcLink);
+            publicLink = data.publicLink;
+            console.log("publcLink: ", publicLink);
+        
 
             bot.reply(message, "click on " + publicLink + "  from your Otello App to access the room");
 
