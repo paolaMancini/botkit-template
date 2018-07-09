@@ -49,9 +49,7 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
             console.log('###################');
              
             var publicLink=body.publicLink;
-            msg += publicLink;
-
-           cb(null, body, msg);
+            cb(null, body, publicLink);
     })
      
 };
