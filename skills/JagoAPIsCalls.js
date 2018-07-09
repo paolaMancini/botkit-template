@@ -22,10 +22,10 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
                 "phone": "string",
                 "publicUser": true,
                 "role": "ROLE_GUEST",
-                "userTagIds": [],
+                "userTagIds": [uTagId],
                 "userTagIdsWithTime": [{
                     "id": uTagId,
-                    "interval": { "from": fromTime, "to": toTime }
+                    "interval": { "from": 0, "to": 0 }
                 }],
                 "username": username
             },
