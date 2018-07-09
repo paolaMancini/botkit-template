@@ -4,7 +4,7 @@ var fine = require("debug")("samples:fine");
 
 module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb) {
     var request = require("request");
-    console.log('POSTuser: ',username,' uTagId: ',uTagId);
+    console.log('POSTuser: ',username,' uTagId: ',uTagId, ' fromTime: ',fromTime,' toTime: ',toTime);
 
    var options = {
             method: "POST",
