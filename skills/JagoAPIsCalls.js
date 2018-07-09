@@ -1,10 +1,10 @@
  
- 
 var debug = require("debug")("samples");
 var fine = require("debug")("samples:fine");
 
 module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb) {
     var request = require("request");
+    console.log('POSTuser: ',username,' uTagId: ',uTagId);
 
    var options = {
             method: "POST",
@@ -17,7 +17,7 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
             },
             body: {
                 "email": username,
-                "firstname": "buddy",
+                "firstname": fname,
                 "lastname": "buddy",
                 "password": "ita123",
                 "phone": "string",
@@ -33,7 +33,7 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
             json: true
         };
 
-        request(options, function(error, response, body) {
+        request(options, function(error, response, events) {
             if (error) {
             debug("1 could not retreive list of events, error: " + error);
             cb(new Error("Could not retreive current events, sorry [Backend Events API not responding]"), null, null);
@@ -47,7 +47,7 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
             }
 
          
-            var events = JSON.parse(body);
+            
             console.log('events: ',events);
             console.log('###################');
          
