@@ -2,7 +2,7 @@
 var debug = require("debug")("samples");
 var fine = require("debug")("samples:fine");
 
-module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb) {
+module.exports.POSTuser = function(username, fname, uTagId, fromTime, fromTime, cb) {
     var request = require("request");
     console.log('POSTuser: ',username,' uTagId: ',uTagId);
 
@@ -23,10 +23,10 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
                 "phone": "string",
                 "publicUser": true,
                 "role": "ROLE_GUEST",
-                "userTagIds": [uTagId],
+                "userTagIds": [],
                 "userTagIdsWithTime": [{
-                    "id": 0,
-                    "interval": { "from": 0, "to": 0 }
+                    "id": uTagId,
+                    "interval": { "from": fromTime, "to": fromTime }
                 }],
                 "username": username
             },
