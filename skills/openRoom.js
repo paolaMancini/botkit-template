@@ -9,6 +9,13 @@ module.exports = function(controller) {
         var random_index = Math.floor(Math.random() * (1000 - 1) + 1);
         var user = "u" + random_index;
 
+      
+        var today = new Date();
+        console.log(today);
+        var tomorrow = new Date();
+        tomorrow.setDate(today.getDate()+1);
+        console.log(tomorrow);
+        
         JagoCalls.POSTuser(user, user, 3513, 1531144800000, 1531159200000, function(err, data, text) {
             if (err) {
                 bot.reply(message, "Jago system not reached! err: ", err);
