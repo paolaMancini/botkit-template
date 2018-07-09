@@ -2,7 +2,7 @@
 var debug = require("debug")("samples");
 var fine = require("debug")("samples:fine");
 
-module.exports.POSTuser = function(username, fname, uTagId, fromTime, fromTime, cb) {
+module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb) {
     var request = require("request");
     console.log('POSTuser: ',username,' uTagId: ',uTagId);
 
@@ -26,7 +26,7 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, fromTime, 
                 "userTagIds": [],
                 "userTagIdsWithTime": [{
                     "id": uTagId,
-                    "interval": { "from": fromTime, "to": fromTime }
+                    "interval": { "from": fromTime, "to": toTime }
                 }],
                 "username": username
             },
