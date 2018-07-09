@@ -64,7 +64,7 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
                  console.log('events.tags[i].id: ',events.tags[i].id);
                  console.log('events.tags[i].state: ',events.tags[i].state);
                  if (events.tags[i].id==uTagId && (events.tags[i].state=="VALID")){
-                   var publicLink=v.publicLink;
+                   var publicLink=events.publicLink;
                   
                   console.log('@@@@@@@@@@@@@@@ publicLink=publicLink');
                  }
