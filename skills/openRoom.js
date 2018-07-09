@@ -17,7 +17,7 @@ module.exports = function(controller) {
         console.log(tomorrow);
         
         //JagoCalls.POSTuser(user, user, 3513, 1531144800000, 1531159200000, function(err, data, text) {
-        JagoCalls.POSTuser(user, user, 3513, today.getMilliseconds(), tomorrow.getMilliseconds(), function(err, data, text) {
+        JagoCalls.POSTuser(user, user, 3513, today.getTime(), tomorrow.getTime(), function(err, data, text) {
             if (err) {
                 bot.reply(message, "Jago system not reached! err: ", err);
                 return;
