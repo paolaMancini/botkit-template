@@ -46,12 +46,14 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
                 return;
             }
 
-            console.log('body: ',body);
+         
+            var events = JSON.parse(body);
+            console.log('events: ',events);
             console.log('###################');
          
             
           
-            var numRec = body.tags.length;
+            var numRec = events.tags.length;
          
             if (numRec == 0) {
                 msg = "No data found";
@@ -60,12 +62,12 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
            
            var publicLink=null;
             for (var i = 0; i < numRec; i++) {
-                 var current = body.tags[i];
-                 publicLink=body.publicLink;
-                 console.log('body.tags[i].id: ',body.tags[i].id);
-                 console.log('body.tags[i].state: ',body.tags[i].state);
-                 if (body.tags[i].id==uTagId && (body.tags[i].state=="VALID")){
-                   var publicLink=body.publicLink;
+                 var current = events.tags[i];
+                 publicLink=events.publicLink;
+                 console.log('events.tags[i].id: ',events.tags[i].id);
+                 console.log('events.tags[i].state: ',events.tags[i].state);
+                 if (events.tags[i].id==uTagId && (events.tags[i].state=="VALID")){
+                   var publicLink=v.publicLink;
                   
                   console.log('@@@@@@@@@@@@@@@ publicLink=publicLink');
                  }
@@ -73,7 +75,7 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
             }
 
              
-            cb(null, body, publicLink);
+            cb(null, events, publicLink);
     })
      
 };
