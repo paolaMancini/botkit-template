@@ -25,7 +25,7 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
                 "role": "ROLE_GUEST",
                 "userTagIds": [uTagId],
                 "userTagIdsWithTime": [{
-                    "id": uTagId,
+                    "id": 0,
                     "interval": { "from": 0, "to": 0 }
                 }],
                 "username": username
