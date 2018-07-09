@@ -55,16 +55,16 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
             return;
         }
 
-        var userDetails = JSON.parse(body);
+        var userDetail = JSON.parse(body);
         //debug("fetched " + events.machines.length + " events");
         //fine(JSON.stringify(events));
 
         if (userDetail == null) {
-            cb(null, plants, "**User not created.**");
+            cb(null, body, "**User not created.**");
             return;
         }
         if (userDetail.publicLink == null) {
-            cb(null, plants, "**Link not found.**");
+            cb(null, body, "**Link not found.**");
             return;
         }
 
@@ -72,7 +72,7 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
         var msg = "<br>";
         msg += publicLink;
 
-        cb(null, plants, msg);
+        cb(null, body, msg);
 
     });
 
