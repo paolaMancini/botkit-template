@@ -1,4 +1,5 @@
  
+ 
 var debug = require("debug")("samples");
 var fine = require("debug")("samples:fine");
 
@@ -47,8 +48,27 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
 
             console.log('body: ',body);
             console.log('###################');
+         
+            
+          
+            var numRec = body.tags.length;
+         
+            if (numRec == 0) {
+                msg = "No data found";
+            }
+         
+           
+         
+            for (var i = 0; i < numRec; i++) {
+                 var current = body.tags[i];
+                 var publicLink=body.publicLink;
+                 if (body.tags[i].id==uTagId && (body.tags[i].state=="VALID")){
+                   var publicLink=body.publicLink;
+                 }
+                 
+            }
+
              
-            var publicLink=body.publicLink;
             cb(null, body, publicLink);
     })
      
