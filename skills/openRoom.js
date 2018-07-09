@@ -1,3 +1,4 @@
+var JagoCalls = require ("./JagoAPIsCalls");
 
 module.exports = function(controller) {
 
