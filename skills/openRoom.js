@@ -31,9 +31,6 @@ module.exports = function(controller) {
                 tomorrow.setDate(today.getDate() + 1);
                 console.log(tomorrow);
 
-                var utcOffset = localDate.getTimezoneOffset();
-    var cetOffset = utcOffset + 60;
-    var cestOffset = utcOffset + 120;
                 
                 JagoCalls.GETIdGuestTagByRoom(roomName.toLowerCase().trim(), function(err, data, text) {
                         var id = null;
