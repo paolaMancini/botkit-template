@@ -50,7 +50,7 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
             console.log('events: ',events);
             console.log('###################');
           
-            var numRec = events.tags.length;
+            var numRec = events.data.length;
          
             if (numRec == 0) {
                 msg = "No data found";
