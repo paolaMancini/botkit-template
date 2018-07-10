@@ -105,7 +105,7 @@ module.exports.GETsmartLocks = function( cb) {
         
         //debug("body: ",body );
         var events = JSON.parse(body);
-        //debug("fetched " + events.machine.length + " events");
+        debug("fetched " + events.data.length + " events");
         //fine(JSON.stringify(events));
 
         if (events.data.length == 0) {
