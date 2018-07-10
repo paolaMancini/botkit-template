@@ -66,7 +66,7 @@ module.exports = function(controller) {
                                 console.log("publcLink: ", publicLink);
 
 
-                                bot.reply(message, "click on " + publicLink + "  from your Otello App to access the room<br>Access Url is valid from: " + today + " to: " + tomorrow);
+                                bot.reply(message, "click on " + publicLink + "  from your Otello App to access the room.<br>Access Url is valid from: " + today + " to: " + tomorrow);
  
                             });
                         } else {
