@@ -107,13 +107,15 @@ module.exports.GETsmartLocks = function( cb) {
             return;
         }
      
-      if (events.data.length == 0) {
-            cb(null, events, "**Found no event currently going on.**");
-            return;
-       }
+     
         
  
-        var events = JSON.parse(body);
+      var events = JSON.parse(body);
+      checkJSON(events);
+       if (events.data.length == 0) {
+             cb(null, events, "**Found no event currently going on.**");
+             return;
+        }
         console.log("fetched " + events.data.length + " events");
         checkJSON(events);
  
