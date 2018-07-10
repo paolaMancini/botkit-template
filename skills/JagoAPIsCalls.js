@@ -128,7 +128,7 @@ module.exports.GETsmartLocks = function( cb) {
             msg = "Rooms available:<br>";
             var current = events.data[i];
             console.log('current.name: ', current.name);
-            console.log(current.model: ', current.model);
+            console.log('current.model: ', current.model);
             msg += "**Room name: " + current.name + "**. Lock model: " + current.model;
         }
         
