@@ -109,7 +109,7 @@ module.exports.GETsmartLocks = function(cb) {
            
              var msg="No room found";
           
-               for (var i = 0; i < numRec; i++) {
+               for (var i = 0; i < events.data.lenght; i++) {
                   msg="Rooms available:<br>";
                     var current = events.data[i];
                     console.log('events.data[i].name: ',events.data[i].name);
