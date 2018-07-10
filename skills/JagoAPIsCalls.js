@@ -134,7 +134,7 @@ module.exports.GETsmartLocks = function( cb) {
             console.log('current.model: ', current.model);
             msg += "<br>Room name: **" + current.name + "**. Lock model: " + current.model;
         }
-        
+        console.log('msg: ',msg);
         cb(null, events, msg);
     });
 }
