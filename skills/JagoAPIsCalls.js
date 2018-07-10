@@ -105,7 +105,7 @@ module.exports.GETsmartLocks = function(cb) {
 
        
        JSON.stringify(info);
-       console.log("^^^^^^^ Check: ',checkJSON(info)); 
+       console.log("^^^^^^^ Check: ",checkJSON(info)); 
        
       console.log('###################');
       console.log('info: ', info);
