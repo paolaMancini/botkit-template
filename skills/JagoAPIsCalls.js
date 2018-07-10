@@ -75,11 +75,12 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
 
 };
 
-module.exports.GETsmartLocks = function(cb) {
+ 
+
+module.exports.GETsmartLocks = function( cb) {
     var request = require("request");
-    console.log('GETsmartLocks ..');
-
-
+    // Get list of upcoming events
+  
     var options = {
         method: 'GET',
         url: "https://api-cisco-otello-mi.jago.cloud/api/v1.1/smartLocks/",
@@ -89,31 +90,36 @@ module.exports.GETsmartLocks = function(cb) {
         }
     };
 
-    request(options, function(error, response, info) {
+    request(options, function(error, response, body) {
         if (error) {
             debug("1 could not retreive list of events, error: " + error);
-            cb(new Error("Could not retreive current events, sorry [Backend Events API not responding]"), null, null);
+            //cb(new Error("Could not retreive current events, sorry [Events API not responding]"), null, null);
             return;
         }
 
         if ((response < 200) || (response > 299)) {
             debug("1 could not retreive list of events, response: " + response);
+            //sparkCallback(new Error("Could not retreive current events, sorry [bad anwser from Events API]"), null, null);
+            return;
+        }
+        
+        //debug("body: ",body );
+        var events = JSON.parse(body);
+        //debug("fetched " + events.machine.length + " events");
+        //fine(JSON.stringify(events));
 
+        if (events.data.length == 0) {
+            cb(null, events, "**Found no event currently going on.**");
             return;
         }
 
-
-       
-       JSON.stringify(info);
-       console.log("^^^^^^^ Check: ",checkJSON(info)); 
-       
-      console.log('###################');
-      console.log('info: ', info);
-        
-      console.log('###################'); console.log('info.data: ', info.data);
-     
-          
-        var msg = "No room found";
+        console.log("event.js: machine= ",machine,"  alias= ",alias,"  param= ",param);
+        var nb = events.data.length;
+         
+        var msg;
+        if (nb == 1) {
+            msg = "No values found";
+        }
         for (var i = 0; i < info.data.lenght; i++) {
             msg = "Rooms available:<br>";
             var current = info.data[i];
@@ -121,11 +127,11 @@ module.exports.GETsmartLocks = function(cb) {
             console.log('info.data[i].model: ', info.data[i].model);
             msg += "**Room name: " + info.data[i].name + "**. Lock model: " + info.data[i].model;
         }
+        
+        cb(null, events, msg);
+    });
+}
 
-        cb(null, info, msg);
-    })
-
-};
 var checkJSON = function(m) {
 
    if (typeof m == 'object') { 
