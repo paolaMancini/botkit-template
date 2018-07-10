@@ -105,7 +105,7 @@ module.exports.GETsmartLocks = function(cb) {
 
        
        JSON.stringify(info);
-    
+       console.log("^^^^^^^ Check: ',checkJSON(info)); 
        
       console.log('###################');
       console.log('info: ', info);
@@ -124,5 +124,19 @@ module.exports.GETsmartLocks = function(cb) {
 
         cb(null, info, msg);
     })
+
+};
+var checkJSON = function(m) {
+
+   if (typeof m == 'object') { 
+      try{ m = JSON.stringify(m); }
+      catch(err) { return false; } }
+
+   if (typeof m == 'string') {
+      try{ m = JSON.parse(m); }
+      catch (err) { return false; } }
+
+   if (typeof m != 'object') { return false; }
+   return true;
 
 };
