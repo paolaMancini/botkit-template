@@ -50,7 +50,7 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
             console.log('events: ',events);
             console.log('###################');
           
-            var numRec = events.data.length;
+            var numRec = events.tags.length;
          
             if (numRec == 0) {
                 msg = "No data found";
@@ -106,23 +106,18 @@ module.exports.GETsmartLocks = function(cb) {
            
             console.log('events: ',events);
             console.log('###################');
-          
-            var numRec = events.data.length;
-             var msg=null;
-         
-            if (numRec == 0) {
-                msg = "No data found";
-            }else{
-               msg="Rooms available:<br>";
            
+             var msg="No room found";
+          
                for (var i = 0; i < numRec; i++) {
+                  msg="Rooms available:<br>";
                     var current = events.data[i];
                     console.log('events.data[i].name: ',events.data[i].name);
                     console.log('events.data[i].model: ',events.data[i].model);
                     msg+="**Room name: "+events.data[i].name+"**. Lock model: "+events.data[i].model;
 
                }
-            }
+           
           
             cb(null, events, publicLink);
     })
