@@ -7,24 +7,7 @@ module.exports = function(controller) {
         console.log('message: ', message);
  
         
-        //JagoCalls.POSTuser(user, user, 3513, 1531144800000, 1531159200000, function(err, data, text) {
-        JagoCalls.GETsmartLocks(function(err, data, text) {
-            
-            if (err) {
-                bot.reply(message, "Jago system not reached! err: ", err);
-                return;
-            }
-            console.log('text: ',text);
-            if (data.length == 0) {
-                bot.reply(message, "Request failed!");
-                return;
-            }
- 
-
-            bot.reply(message, text);
- 
-        });
-        //JagoCalls.POSTuser(user, user, 3513, 1531144800000, 1531159200000, function(err, data, text) {
+         
         JagoCalls.GETsmartLocks(function(err, data, text) {
             if (err) {
                 bot.reply(message, "Jago system not reached! err: ", err);
