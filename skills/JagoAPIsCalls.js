@@ -132,7 +132,68 @@ module.exports.GETsmartLocks = function( cb) {
             var current = events.data[i];
             console.log('current.name: ', current.name);
             console.log('current.model: ', current.model);
-            msg += "<br>ROOM Name: **" + current.name + "** - LOCK model: **" + current.model+ "** - Vendor: **" + current.vendor+ "** - Serial Number: **" + current.serialNumber++"**<br>";
+            msg += "<br>ROOM Name: **" + current.name + "** - LOCK model: **" + current.model+ "** - Vendor: **" + current.vendor+ "** - Serial Number: **" + current.serialNumber+"**<br>";
+        }
+        console.log('msg: ',msg);
+        cb(null, events, msg);
+    });
+}
+
+
+
+module.exports.GETidSmartLocksByName = function( name,cb) {
+    var request = require("request");
+    // Get list of upcoming events
+  
+    var options = {
+        method: 'GET',
+        url: "https://api-cisco-otello-mi.jago.cloud/api/v1.1/smartLocks/",
+        headers: {
+            "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiUk9MRV9NQU5BR0VSIiwidXNlcl9uYW1lIjoibWFuYWdlckBjaXNjby5jb20iLCJzY29wZSI6WyJvdGVsbG9fcmVhZCIsIm90ZWxsb193cml0ZSJdLCJ1c2VySWQiOjM2MjQsImF1dGhvcml0aWVzIjpbIlJPTEVfTUFOQUdFUiJdLCJqdGkiOiI1NTUxYzQ0Zi0yYmRmLTQyZGYtOTM4Zi01MmVjMTlhZDgyNTciLCJjbGllbnRfaWQiOiJhcHAifQ.P_hbCZrvmbGc9MKpOKU_XTbiaPrRIJ01R9ZwEcJrRQY",
+            "accept": "application/json"
+        }
+    };
+
+    request(options, function(error, response, body) {
+        if (error) {
+            console.log("1 could not retreive list of events, error: " + error);
+            //cb(new Error("Could not retreive current events, sorry [Events API not responding]"), null, null);
+            return;
+        }
+
+        if ((response < 200) || (response > 299)) {
+            console.log("1 could not retreive list of events, response: " + response);
+            //sparkCallback(new Error("Could not retreive current events, sorry [bad anwser from Events API]"), null, null);
+            return;
+        }
+     
+     
+        
+ 
+      var events = JSON.parse(body);
+      checkJSON(events);
+       if (events.data.length == 0) {
+             cb(null, events, "**Found no event currently going on.**");
+             return;
+        }
+        console.log("fetched " + events.data.length + " events");
+        checkJSON(events);
+ 
+       // console.log("events: ",events);
+        var nb = events.data.length;
+         
+        var msg=null;
+        if (nb == 1) {
+            msg = "No values found";
+        }
+     
+        msg = "Rooms available:";
+        for (var i = 0; i < nb; i++) {         
+            var current = events.data[i];
+            if (current.name == name){
+                msg=current.id;
+            }
+            
         }
         console.log('msg: ',msg);
         cb(null, events, msg);
