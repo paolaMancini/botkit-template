@@ -4,8 +4,8 @@ module.exports = function(controller) {
 
     controller.hears(['access |open'], 'direct_message,direct_mention', function(bot, message) {
         console.log('message: ', message);
- 
-       //var roomName = message.match[0];
+
+        //var roomName = message.match[0];
         var roomName = "Digitaliani";
 
         console.log("roomName  received: ", roomName);
@@ -23,7 +23,7 @@ module.exports = function(controller) {
         tomorrow.setDate(today.getDate() + 1);
         console.log(tomorrow);
 
-        JagoCalls.GETIdGuestTagByRoom (roomName, function(err, data, text) {
+        JagoCalls.GETIdGuestTagByRoom(roomName, function(err, data, text) {
             var id = null;
             if (err) {
                 bot.reply(message, "Jago system not reached! err: ", err);
@@ -35,38 +35,38 @@ module.exports = function(controller) {
                 return;
             }
 
+            var id = tex;
+            if (id != null) {
+                console.log("id: ", id);
 
-            console.log("id: ", id);
-            
-            // Office 301 Italtel => 3513 
-            // Digitaliani Cisco => 3471
-            //JagoCalls.POSTuser(user, user, 3513, today.getTime(), tomorrow.getTime(), function(err, data, text) {
-            JagoCalls.POSTuser(user, user,  id, today.getTime(), tomorrow.getTime(), function(err, data, text) {
-                if (err) {
-                    bot.reply(message, "Jago system not reached! err: ", err);
-                    return;
-                }
+                // Office 301 Italtel => 3513 
+                // Digitaliani Cisco => 3471
+                //JagoCalls.POSTuser(user, user, 3513, today.getTime(), tomorrow.getTime(), function(err, data, text) {
+                JagoCalls.POSTuser(user, user, id, today.getTime(), tomorrow.getTime(), function(err, data, text) {
+                    if (err) {
+                        bot.reply(message, "Jago system not reached! err: ", err);
+                        return;
+                    }
 
-                if (data.length == 0) {
-                    bot.reply(message, "Request failed!");
-                    return;
-                }
+                    if (data.length == 0) {
+                        bot.reply(message, "Request failed!");
+                        return;
+                    }
 
-                publicLink = data.publicLink;
-                console.log("publcLink: ", publicLink);
-
-
-                bot.reply(message, "click on " + publicLink + "  from your Otello App to access the room<br>Access open from: "+today+ " to: "+tomorrow);
+                    publicLink = data.publicLink;
+                    console.log("publcLink: ", publicLink);
 
 
-
-
-            });
+                    bot.reply(message, "click on " + publicLink + "  from your Otello App to access the room<br>Access open from: " + today + " to: " + tomorrow);
 
 
 
 
+                });
+            } else {
+                bot.reply(message, "Room not available<");
 
+            }
         });
     });
 }
