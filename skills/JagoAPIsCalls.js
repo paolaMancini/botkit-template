@@ -107,7 +107,7 @@ module.exports.GETsmartLocks = function(cb) {
             console.log('events: ',events);
             console.log('###################');
           
-            var numRec = events.tags.length;
+            var numRec = events.data.length;
              var msg=null;
          
             if (numRec == 0) {
@@ -116,10 +116,10 @@ module.exports.GETsmartLocks = function(cb) {
                msg="Rooms available:<br>";
            
                for (var i = 0; i < numRec; i++) {
-                    var current = events.tags[i];
-                    console.log('events.tags[i].name: ',events.tags[i].name);
-                    console.log('events.tags[i].model: ',events.tags[i].model);
-                    msg+="**Room name: "+events.name+"**. Lock model: "+events.tags[i].model;
+                    var current = events.data[i];
+                    console.log('events.data[i].name: ',events.data[i].name);
+                    console.log('events.data[i].model: ',events.data[i].model);
+                    msg+="**Room name: "+events.data[i].name+"**. Lock model: "+events.data[i].model;
 
                }
             }
