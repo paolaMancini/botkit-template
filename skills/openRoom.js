@@ -11,7 +11,7 @@ module.exports = function(controller) {
             //var roomName = "digitaliani";
             var roomName = message.match[1];
 
-            if ((roomName != "digitaliani") && (roomName != "Office 301")) {
+            if ((roomName != "digitaliani") && (roomName.toLowerCase() != "Office 301".toLowerCase())) {
                 bot.reply(message, "Room " + roomName + "not available");
             } else {
                 console.log("  received: ", roomName);
