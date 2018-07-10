@@ -48,7 +48,7 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
         }
 
 
-        console.log('events: ', events);
+        //console.log('events: ', events);
         console.log('###################');
     
 
@@ -181,7 +181,6 @@ module.exports.GETIdGuestTagByRoom = function( name,cb) {
              return;
         }
         console.log("fetched " + events.data.length + " events");
-        checkJSON(events);
  
        // console.log("events: ",events);
         var nb = events.data.length;
@@ -202,7 +201,7 @@ module.exports.GETIdGuestTagByRoom = function( name,cb) {
           var typeNorm=current.type.toLowerCase()
            if ((typeNorm.includes(trim(name))) || (nameNorm.includes(trim(name)))) {
                 msg=current.id;
-               console.log("found id: ", current.is);
+               console.log("found id: ", current.id);
             }
             
         }
