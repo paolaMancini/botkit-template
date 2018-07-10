@@ -1,12 +1,12 @@
 module.exports = function (controller) {
 
-    controller.hears([/^threads$/], "direct_message,direct_mention", function (bot, message) {
+    controller.hears([/key/], "direct_message,direct_mention", function (bot, message) {
 
         bot.startConversation(message, function (err, convo) {
 
-            convo.ask("What is your favorite color?", [
+            convo.ask("please specify the room from the following list<br>**Digitaliani**<br>**Office 301*?", [
                 {
-                    pattern: "^blue|green|pink|red|yellow$",
+                    pattern: "^Digitaliani|Office 301$",
                     callback: function (response, convo) {
                         convo.gotoThread("success");
                     },
@@ -14,7 +14,7 @@ module.exports = function (controller) {
                 {
                     default: true,
                     callback: function (response, convo) {
-                        convo.say("Sorry, I don't know this color. Try another one...");
+                        convo.say("Sorry, I don't know this room. Try another one...");
                         convo.repeat();
                         convo.next();
                     }
