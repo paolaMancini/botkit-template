@@ -141,13 +141,16 @@ module.exports.GETsmartLocks = function( cb) {
 
 
 
-module.exports.GETIdSmartLockByName = function( name,cb) {
+module.exports.GETIdGuestTagByRoom = function( name,cb) {
+ // se roomName=digitaliani, ricercodigitaliani nel type e restituisco l'id
+  
+ 
     var request = require("request");
     // Get list of upcoming events
   
     var options = {
         method: 'GET',
-        url: "https://api-cisco-otello-mi.jago.cloud/api/v1.1/smartLocks/",
+        url: "https://api-cisco-otello-mi.jago.cloud/api/v1.1/guestTags",
         headers: {
             "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiUk9MRV9NQU5BR0VSIiwidXNlcl9uYW1lIjoibWFuYWdlckBjaXNjby5jb20iLCJzY29wZSI6WyJvdGVsbG9fcmVhZCIsIm90ZWxsb193cml0ZSJdLCJ1c2VySWQiOjM2MjQsImF1dGhvcml0aWVzIjpbIlJPTEVfTUFOQUdFUiJdLCJqdGkiOiI1NTUxYzQ0Zi0yYmRmLTQyZGYtOTM4Zi01MmVjMTlhZDgyNTciLCJjbGllbnRfaWQiOiJhcHAifQ.P_hbCZrvmbGc9MKpOKU_XTbiaPrRIJ01R9ZwEcJrRQY",
             "accept": "application/json"
@@ -186,12 +189,19 @@ module.exports.GETIdSmartLockByName = function( name,cb) {
         if (nb == 1) {
             msg = "No values found";
         }
-     
-        msg = "Rooms available:";
+  
+     current.type.toLowerCase.includes(current.name.toLowerCase())
+      var n = str.includes("world");
+     str.toLowerCase()
+ 
         for (var i = 0; i < nb; i++) {         
             var current = events.data[i];
-            if (current.name == name){
+           
+            console.log("found type: ", current.type);
+            console.log('current: ,current);
+            if ( current.type.toLowerCase.includes(current.name.toLowerCase())){
                 msg=current.id;
+               console.log("found id: ", current.is);
             }
             
         }
@@ -214,3 +224,4 @@ var checkJSON = function(m) {
    return true;
 
 };
+
