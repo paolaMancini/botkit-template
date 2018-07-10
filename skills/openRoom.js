@@ -37,9 +37,11 @@ module.exports = function(controller) {
 
 
             console.log("id: ", id);
-
-            // call Create User
-            JagoCalls.POSTuser(user, user, 3513, today.getTime(), tomorrow.getTime(), function(err, data, text) {
+            
+            // Office 301 Italtel => 3513 
+            // Digitaliani Cisco => 3471
+            //JagoCalls.POSTuser(user, user, 3513, today.getTime(), tomorrow.getTime(), function(err, data, text) {
+            JagoCalls.POSTuser(user, user,  id, today.getTime(), tomorrow.getTime(), function(err, data, text) {
                 if (err) {
                     bot.reply(message, "Jago system not reached! err: ", err);
                     return;
@@ -54,7 +56,7 @@ module.exports = function(controller) {
                 console.log("publcLink: ", publicLink);
 
 
-                bot.reply(message, "click on " + publicLink + "  from your Otello App to access the room");
+                bot.reply(message, "click on " + publicLink + "  from your Otello App to access the room<br>Access open from: "+today+ " to: "+tomorrow);
 
 
 
