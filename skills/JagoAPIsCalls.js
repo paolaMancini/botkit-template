@@ -89,7 +89,7 @@ module.exports.GETsmartLocks = function(cb) {
         }
     };
 
-    request(options, function(error, response, events) {
+    request(options, function(error, response, info) {
         if (error) {
             debug("1 could not retreive list of events, error: " + error);
             cb(new Error("Could not retreive current events, sorry [Backend Events API not responding]"), null, null);
@@ -103,24 +103,26 @@ module.exports.GETsmartLocks = function(cb) {
         }
 
 
-        //console.log('events: ', events);
-       var info=JSON.stringify(events);
-      console.log('info.lenght: ',info.data.lenght);
+       
+       JSON.stringify(info);
+    
        
       console.log('###################');
-        console.log('events.data.numRec: ', events.data.numRec);
+      console.log('info: ', info);
+        
       console.log('###################');
-              var numRec = events.data.numRec ; 
+     
+          
         var msg = "No room found";
-        for (var i = 0; i < numRec; i++) {
+        for (var i = 0; i < info.data.lenght; i++) {
             msg = "Rooms available:<br>";
-            var current = events.data[i];
-            console.log('events.data[i].name: ', events.data[i].name);
-            console.log('events.data[i].model: ', events.data[i].model);
-            msg += "**Room name: " + events.data[i].name + "**. Lock model: " + events.data[i].model;
+            var current = info.data[i];
+            console.log('info.data[i].name: ', info.data[i].name);
+            console.log('info.data[i].model: ', info.data[i].model);
+            msg += "**Room name: " + info.data[i].name + "**. Lock model: " + info.data[i].model;
         }
 
-        cb(null, events, msg);
+        cb(null, info, msg);
     })
 
 };
