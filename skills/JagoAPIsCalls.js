@@ -106,30 +106,30 @@ module.exports.GETsmartLocks = function( cb) {
             //sparkCallback(new Error("Could not retreive current events, sorry [bad anwser from Events API]"), null, null);
             return;
         }
-        
-        //debug("body: ",body );
-        var events = JSON.parse(body);
-         console.log("fetched " + events.data.length + " events");
-         JSON.stringify(events);
-
-        if (events.data.length == 0) {
+     
+      if (events.data.length == 0) {
             cb(null, events, "**Found no event currently going on.**");
             return;
-        }
-
-        console.log("events: ",events);
+       }
+        
+ 
+        var events = JSON.parse(body);
+        console.log("fetched " + events.data.length + " events");
+        checkJSON(events);
+ 
+       // console.log("events: ",events);
         var nb = events.data.length;
          
-        var msg;
+        var msg="<br";
         if (nb == 1) {
             msg = "No values found";
         }
-        for (var i = 0; i < events.data.lenght; i++) {
+        for (var i = 0; i < nb; i++) {
             msg = "Rooms available:<br>";
             var current = events.data[i];
-            console.log('events.data[i].name: ', events.data[i].name);
-            console.log('events.data[i].model: ', events.data[i].model);
-            msg += "**Room name: " + events.data[i].name + "**. Lock model: " + events.data[i].model;
+            console.log('current.name: ', current.name);
+            console.log(current.model: ', current.model);
+            msg += "**Room name: " + current.name + "**. Lock model: " + current.model;
         }
         
         cb(null, events, msg);
