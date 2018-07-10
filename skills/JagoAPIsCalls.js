@@ -141,7 +141,7 @@ module.exports.GETsmartLocks = function( cb) {
 
 
 
-module.exports.GETidSmartLocksByName = function( name,cb) {
+module.exports.GETIdSmartLockByName = function( name,cb) {
     var request = require("request");
     // Get list of upcoming events
   
