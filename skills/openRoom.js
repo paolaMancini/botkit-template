@@ -2,11 +2,17 @@ var JagoCalls = require("./JagoAPIsCalls");
 
 module.exports = function(controller) {
 
-    controller.hears(['access |authorize'], 'direct_message,direct_mention', function(bot, message) {
+    controller.hears(['open |access'], 'direct_message,direct_mention', function(bot, message) {
         console.log('message: ', message);
+        
+         bot.startConversation(message, function (err, convo) {
+           
 
-        //var roomName = message.match[0];
-        var roomName = "digitaliani";
+            convo.ask('Please, specify the room of you interest from the following list:<br> **digitaliani**<br>Office 301**', function (response, convo) {
+                convo.say(response.text + "! got it!");
+                        var roomName = response.text;
+                //var roomName = message.match[0];
+        //var roomName = "digitaliani";
 
         console.log("roomName  received: ", roomName);
 
@@ -67,6 +73,11 @@ module.exports = function(controller) {
                 bot.reply(message, "Room not available<");
 
             }
+                 
+            });
+        });
+
+        
         });
     });
 }
