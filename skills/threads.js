@@ -4,7 +4,7 @@ module.exports = function (controller) {
 
         bot.startConversation(message, function (err, convo) {
 
-            convo.ask("please specify the room from the following list<br>**Digitaliani**<br>**Office 301*?", [
+            convo.ask("please specify the room from the following list<br>**Digitaliani**<br>**Office 301**?", [
                 {
                     pattern: "^Digitaliani|Office 301$",
                     callback: function (response, convo) {
