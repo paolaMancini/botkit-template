@@ -6,7 +6,7 @@ module.exports = function(controller) {
         console.log('message: ', message);
 
         //var roomName = message.match[0];
-        var roomName = "Digitaliani";
+        var roomName = "digitaliani";
 
         console.log("roomName  received: ", roomName);
 
