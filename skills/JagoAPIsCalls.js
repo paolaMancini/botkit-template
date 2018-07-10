@@ -132,7 +132,7 @@ module.exports.GETsmartLocks = function( cb) {
             var current = events.data[i];
             console.log('current.name: ', current.name);
             console.log('current.model: ', current.model);
-            msg += "<br>Room name: **" + current.name + "**. Lock model: " + current.model;
+            msg += "<br>ROOM Name: **" + current.name + "** - LOCK model: **" + current.model+ "** - Vendor: **" + current.vendor+ "** - Serial Number: **" + current.serialNumber++"**<br>";
         }
         console.log('msg: ',msg);
         cb(null, events, msg);
