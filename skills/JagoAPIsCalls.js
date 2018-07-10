@@ -122,16 +122,17 @@ module.exports.GETsmartLocks = function( cb) {
        // console.log("events: ",events);
         var nb = events.data.length;
          
-        var msg="<br";
+        var msg="<br>";
         if (nb == 1) {
             msg = "No values found";
         }
-        for (var i = 0; i < nb; i++) {
-            msg = "Rooms available:<br>";
+     
+        msg = "Rooms available:";
+        for (var i = 0; i < nb; i++) {         
             var current = events.data[i];
             console.log('current.name: ', current.name);
             console.log('current.model: ', current.model);
-            msg += "**Room name: " + current.name + "**. Lock model: " + current.model;
+            msg += "<br>Room name: **" + current.name + "**. Lock model: " + current.model;
         }
         
         cb(null, events, msg);
