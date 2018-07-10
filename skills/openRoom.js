@@ -25,12 +25,16 @@ module.exports = function(controller) {
                 var user = "u" + random_index;
 
                 //Manage time range for access duration
-                var today = new Date();
+                var today = new Date().getTimezoneOffset();
                 console.log(today);
-                var tomorrow = new Date();
+                var tomorrow = new Date().getTimezoneOffset();
                 tomorrow.setDate(today.getDate() + 1);
                 console.log(tomorrow);
 
+                var utcOffset = localDate.getTimezoneOffset();
+    var cetOffset = utcOffset + 60;
+    var cestOffset = utcOffset + 120;
+                
                 JagoCalls.GETIdGuestTagByRoom(roomName.toLowerCase().trim(), function(err, data, text) {
                         var id = null;
                         if (err) {
