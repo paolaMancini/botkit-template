@@ -2,7 +2,8 @@ var JagoCalls = require("./JagoAPIsCalls");
 
 module.exports = function(controller) {
 
-    controller.hears(['open digitaliani|open Office 301'], 'direct_message,direct_mention', function(bot, message) {
+    //controller.hears(['open digitaliani|open Office 301'], 'direct_message,direct_mention', function(bot, message) {
+    controller.hears(['open (*)'], 'direct_message,direct_mention', function(bot, message) {
         console.log('message: ', message);
 
         console.log( message.match[0]);
