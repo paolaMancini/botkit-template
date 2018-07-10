@@ -11,10 +11,11 @@ module.exports = function(controller) {
             //var roomName = "digitaliani";
             var roomName = message.match[1];
             var italtelRoom="Office 301";
+            var ciscoRoom="Digitaliani";
            // console.log("roomName.toLowerCase(): ",roomName.toLowerCase());
             //console.log("Office 301".toLowerCase(): ",Office 301".toLowerCase());
         
-            if ((roomName != "digitaliani") && (roomName.toLowerCase().trim()!=(italtelRoom.toLowerCase()).trim())) {
+            if ((roomName.toLowerCase().trim()!=(ciscoRoom.toLowerCase()).trim())) && (roomName.toLowerCase().trim()!=(italtelRoom.toLowerCase()).trim())) {
                 bot.reply(message, "Room " + roomName + " not available");
             } else {
                 console.log("  received: ", roomName);
