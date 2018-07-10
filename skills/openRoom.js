@@ -73,11 +73,7 @@ module.exports = function(controller) {
                             bot.reply(message, "Room not available");
 
                         }
-                    }
+                })}
 
-                }
-            });
-
-    })
-
-}
+                })
+            };
