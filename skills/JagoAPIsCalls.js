@@ -105,7 +105,7 @@ module.exports.GETsmartLocks = function(cb) {
 
         //console.log('events: ', events);
        var info=JSON.stringify(events);
-      console.log('info.lenght: ',info.lenght);
+      console.log('info.lenght: ',info.data.lenght);
        
       console.log('###################');
         console.log('events.data.numRec: ', events.data.numRec);
