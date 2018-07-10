@@ -25,9 +25,9 @@ module.exports = function(controller) {
                 var user = "u" + random_index;
 
                 //Manage time range for access duration
-                var today = new Date().getTimezoneOffset();
+                var today = new Date() ;
                 console.log(today);
-                var tomorrow = new Date().getTimezoneOffset();
+                var tomorrow = new Date();
                 tomorrow.setDate(today.getDate() + 1);
                 console.log(tomorrow);
 
