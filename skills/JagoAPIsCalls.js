@@ -110,7 +110,7 @@ module.exports.GETsmartLocks = function(cb) {
       console.log('###################');
       console.log('info: ', info);
         
-      console.log('###################');
+      console.log('###################'); console.log('info.data[0]: ', info.data[0]);
      
           
         var msg = "No room found";
