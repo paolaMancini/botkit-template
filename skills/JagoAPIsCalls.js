@@ -76,3 +76,57 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
     })
      
 };
+
+module.exports.GETsmartLocks = function(cb) {
+    var request = require("request");
+    console.log('GETsmartLocks ..');
+ 
+ 
+        var options = { method: 'GET',
+          url: "https://api-cisco-otello-mi.jago.cloud/api/v1.1/smartLocks/",
+          headers: 
+           {  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiUk9MRV9NQU5BR0VSIiwidXNlcl9uYW1lIjoibWFuYWdlckBjaXNjby5jb20iLCJzY29wZSI6WyJvdGVsbG9fcmVhZCIsIm90ZWxsb193cml0ZSJdLCJ1c2VySWQiOjM2MjQsImF1dGhvcml0aWVzIjpbIlJPTEVfTUFOQUdFUiJdLCJqdGkiOiI1NTUxYzQ0Zi0yYmRmLTQyZGYtOTM4Zi01MmVjMTlhZDgyNTciLCJjbGllbnRfaWQiOiJhcHAifQ.P_hbCZrvmbGc9MKpOKU_XTbiaPrRIJ01R9ZwEcJrRQY",
+                "accept": "application/json"
+            }
+        };
+
+        request(options, function(error, response, events) {
+            if (error) {
+            debug("1 could not retreive list of events, error: " + error);
+            cb(new Error("Could not retreive current events, sorry [Backend Events API not responding]"), null, null);
+            return;
+            }
+
+            if ((response < 200) || (response > 299)) {
+                debug("1 could not retreive list of events, response: " + response);
+
+                return;
+            }
+
+           
+            console.log('events: ',events);
+            console.log('###################');
+          
+            var numRec = events.tags.length;
+             var msg=null;
+         
+            if (numRec == 0) {
+                msg = "No data found";
+            }else{
+               msg="Rooms available:<br>";
+           
+               for (var i = 0; i < numRec; i++) {
+                    var current = events.tags[i];
+                    console.log('events.tags[i].name: ',events.tags[i].name);
+                    console.log('events.tags[i].model: ',events.tags[i].model);
+                    msg+="**Room name: "+events.name+"**. Lock model: "+events.tags[i].model;
+
+               }
+            }
+          
+            cb(null, events, publicLink);
+    })
+     
+};
+
+
