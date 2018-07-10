@@ -14,7 +14,7 @@ module.exports = function(controller) {
             if ((roomName != "digitaliani") && (roomName != "Office 301")) {
                 bot.reply(message, "Room " + roomName + "not available");
             } else {
-                console.log("roomName  received: ", roomName);
+                console.log("  received: ", roomName);
 
                 var request = require("request");
 
@@ -29,7 +29,7 @@ module.exports = function(controller) {
                 tomorrow.setDate(today.getDate() + 1);
                 console.log(tomorrow);
 
-                JagoCalls.GETIdGuestTagByRoom(roomName, function(err, data, text) {
+                JagoCalls.GETIdGuestTagByRoom(roomName.toLowerCase(), function(err, data, text) {
                         var id = null;
                         if (err) {
                             bot.reply(message, "Jago system not reached! err: ", err);
