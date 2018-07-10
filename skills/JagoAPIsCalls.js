@@ -144,6 +144,7 @@ module.exports.GETsmartLocks = function( cb) {
 module.exports.GETIdGuestTagByRoom = function( name,cb) {
  // se roomName=digitaliani, ricercodigitaliani nel type e restituisco l'id
   
+    console.log("GETIdGuestTagByRoom (",name,")");
  
     var request = require("request");
     // Get list of upcoming events
@@ -197,7 +198,7 @@ module.exports.GETIdGuestTagByRoom = function( name,cb) {
             console.log("found type: ", current.type);
             console.log('current: ',current);
             var typeNorm=current.type.toLowerCase();
-            if ( typeNorm.includes(current.name.toLowerCase())){
+            if ( typeNorm.includes(name.toLowerCase())){
                 msg=current.id;
                console.log("found id: ", current.is);
             }
