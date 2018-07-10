@@ -2,11 +2,11 @@ var JagoCalls = require("./JagoAPIsCalls");
 
 module.exports = function(controller) {
 
-    controller.hears(['access|open|token'], 'direct_message,direct_mention', function(bot, message) {
+    controller.hears(['access |open'], 'direct_message,direct_mention', function(bot, message) {
         console.log('message: ', message);
-
-        console.log('message: ', message);
-        var roomName = message.match[1];
+ 
+       //var roomName = message.match[0];
+        var roomName = "Digitaliani";
 
         console.log("roomName  received: ", roomName);
 
