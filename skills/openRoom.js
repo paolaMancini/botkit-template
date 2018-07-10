@@ -32,7 +32,7 @@ module.exports = function(controller) {
                 tomorrow.setDate(today.getDate() + 1);
                 console.log(tomorrow);
 
-                JagoCalls.GETIdGuestTagByRoom(roomName.toLowerCase(), function(err, data, text) {
+                JagoCalls.GETIdGuestTagByRoom(roomName.toLowerCase().trim(), function(err, data, text) {
                         var id = null;
                         if (err) {
                             bot.reply(message, "Jago system not reached! err: ", err);
