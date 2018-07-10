@@ -46,7 +46,7 @@ module.exports.POSTuser = function(username, fname, uTagId, fromTime, toTime, cb
 
         console.log('events: ', events);
         console.log('###################');
-     console.log('events: ', events.data);
+    
 
         var numRec = events.tags.length;
 
@@ -103,10 +103,11 @@ module.exports.GETsmartLocks = function(cb) {
         }
 
 
-        console.log('events: ', events);
+        //console.log('events: ', events);
         console.log('###################');
-
-        var numRec = events.data.length;
+        console.log('events.data.numRec: ', events.data.numRec);
+      console.log('###################');
+              var numRec = events.data.numRec ; 
         var msg = "No room found";
         for (var i = 0; i < numRec; i++) {
             msg = "Rooms available:<br>";
