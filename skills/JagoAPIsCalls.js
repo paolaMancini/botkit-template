@@ -96,21 +96,21 @@ module.exports.GETsmartLocks = function( cb) {
 
     request(options, function(error, response, body) {
         if (error) {
-            debug("1 could not retreive list of events, error: " + error);
+            console.log("1 could not retreive list of events, error: " + error);
             //cb(new Error("Could not retreive current events, sorry [Events API not responding]"), null, null);
             return;
         }
 
         if ((response < 200) || (response > 299)) {
-            debug("1 could not retreive list of events, response: " + response);
+            console.log("1 could not retreive list of events, response: " + response);
             //sparkCallback(new Error("Could not retreive current events, sorry [bad anwser from Events API]"), null, null);
             return;
         }
         
         //debug("body: ",body );
         var events = JSON.parse(body);
-        debug("fetched " + events.data.length + " events");
-        //fine(JSON.stringify(events));
+         console.log("fetched " + events.data.length + " events");
+         JSON.stringify(events);
 
         if (events.data.length == 0) {
             cb(null, events, "**Found no event currently going on.**");
