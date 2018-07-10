@@ -198,7 +198,7 @@ module.exports.GETIdGuestTagByRoom = function( name,cb) {
             var current = events.data[i];
            
             console.log("found type: ", current.type);
-            console.log('current: ,current);
+            console.log('current: ',current);
             if ( current.type.toLowerCase.includes(current.name.toLowerCase())){
                 msg=current.id;
                console.log("found id: ", current.is);
