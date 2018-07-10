@@ -2,7 +2,7 @@ var JagoCalls = require("./JagoAPIsCalls");
 
 module.exports = function(controller) {
 
-    controller.hears(['room digitaliani|room Office 301'/i], 'direct_message,direct_mention', function(bot, message) {
+    controller.hears(['open digitaliani|open Office 301'/i], 'direct_message,direct_mention', function(bot, message) {
         console.log('message: ', message);
 
         var roomName = message.match[0];
