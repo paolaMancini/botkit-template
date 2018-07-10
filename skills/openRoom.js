@@ -35,7 +35,7 @@ module.exports = function(controller) {
                 return;
             }
 
-            var id = tex;
+            var id = text;
             if (id != null) {
                 console.log("id: ", id);
 
