@@ -190,10 +190,7 @@ module.exports.GETIdGuestTagByRoom = function( name,cb) {
             msg = "No values found";
         }
   
-     current.type.toLowerCase.includes(current.name.toLowerCase())
-      var n = str.includes("world");
-     str.toLowerCase()
- 
+      
         for (var i = 0; i < nb; i++) {         
             var current = events.data[i];
            
