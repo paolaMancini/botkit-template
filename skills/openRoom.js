@@ -10,10 +10,10 @@ module.exports = function(controller) {
             console.log(message.match[1]);
             //var roomName = "digitaliani";
             var roomName = message.match[1];
-            var italtelRoom="Office 301";
-            var ciscoRoom="Digitaliani";
-           
-            if ((roomName.toLowerCase().trim()!=(ciscoRoom.toLowerCase()).trim()) && (roomName.toLowerCase().trim()!=(italtelRoom.toLowerCase()).trim())) {
+            var italtelRoom = "Office 301";
+            var ciscoRoom = "Digitaliani";
+
+            if ((roomName.toLowerCase().trim() != (ciscoRoom.toLowerCase()).trim()) && (roomName.toLowerCase().trim() != (italtelRoom.toLowerCase()).trim())) {
                 bot.reply(message, "Room " + roomName + " not available");
             } else {
                 console.log("  received: ", roomName);
@@ -25,13 +25,30 @@ module.exports = function(controller) {
                 var user = "u" + random_index;
 
                 //Manage time range for access duration
-                var today = new Date() ;
-                console.log(today);
-                var tomorrow = new Date();
-                tomorrow.setDate(today.getDate() + 1);
-                console.log(tomorrow);
+                //var today = new Date() ;
+                //console.log(today);
+                //var tomorrow = new Date();
+                //tomorrow.setDate(today.getDate() + 1);
+                //console.log(tomorrow);
+                var todayUTC = new Date();
+                var utcOffset = todayUTC.getTimezoneOffset();
+                var cestOffset = utcOffset + 120;
+                var todayCESTtime = todayUTC.getTime() + (cestOffset * 60000);
+                var todayCEST = new Date(todayCESTtime);
+                var today = todayCEST.getDate() + "-" + (todayCEST.getMonth() + 1) + "-" + todayCEST.getFullYear() + " " +
+                    todayCEST.getHours() + ":" + todayCEST.getMinutes();
 
-                
+                console.log('todayCESTtime: ', todayCESTtime);
+                console.log('today: ', today);
+
+                var tomorrowCEST = new Date();
+                tomorrowCEST.setDate(todayCEST.getDate() + 1);
+                var tomorrowCESTtime = tomorrowCEST.getTime();
+                var tomorrow = tomorrowCEST.getDate() + "-" + (tomorrowCEST.getMonth() + 1) + "-" + tomorrowCEST.getFullYear() + " " +
+                    tomorrowCEST.getHours() + ":" + tomorrowCEST.getMinutes();
+                console.log('tomorrowCESTtime: ', tomorrowCESTtime);
+                console.log('tomorrow: ', tomorrow);
+
                 JagoCalls.GETIdGuestTagByRoom(roomName.toLowerCase().trim(), function(err, data, text) {
                         var id = null;
                         if (err) {
@@ -52,28 +69,30 @@ module.exports = function(controller) {
                             // Digitaliani Cisco => 3471
                             //JagoCalls.POSTuser(user, user, 3513, today.getTime(), tomorrow.getTime(), function(err, data, text) {
                             JagoCalls.POSTuser(user, user, id, today.getTime(), tomorrow.getTime(), function(err, data, text) {
-                                if (err) {
-                                    bot.reply(message, "Jago system not reached! err: ", err);
-                                    return;
-                                }
+                                    if (err) {
+                                        bot.reply(message, "Jago system not reached! err: ", err);
+                                        return;
+                                    }
 
-                                if (data.length == 0) {
-                                    bot.reply(message, "Request failed!");
-                                    return;
-                                }
+                                    if (data.length == 0) {
+                                        bot.reply(message, "Request failed!");
+                                        return;
+                                    }
 
-                                publicLink = data.publicLink;
-                                console.log("publcLink: ", publicLink);
+                                    publicLink = data.publicLink;
+                                    console.log("publcLink: ", publicLink);
 
+                                    var msg = "Activate bluetooth and Click on " + publicLink + "  from your Otello App to access the room.";
+                                    msg += "<br><br>**Remember**: Access Url is valid from: " + today + " to: " + tomorrow; 
+                                    bot.reply(message, msg);
 
-                                bot.reply(message, "click on " + publicLink + "  from your Otello App to access the room.<br>Access Url is valid from: " + today + " to: " + tomorrow);
- 
                             });
-                        } else {
-                            bot.reply(message, "Room not available");
+                    } else {
+                        bot.reply(message, "Room not available");
 
-                        }
-                })}
-
+                    }
                 })
-            };
+        }
+
+    })
+};
