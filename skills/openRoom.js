@@ -68,7 +68,7 @@ module.exports = function(controller) {
                             // Office 301 Italtel => 3513 
                             // Digitaliani Cisco => 3471
                             //JagoCalls.POSTuser(user, user, 3513, today.getTime(), tomorrow.getTime(), function(err, data, text) {
-                            JagoCalls.POSTuser(user, user, id, today.getTime(), tomorrow.getTime(), function(err, data, text) {
+                            JagoCalls.POSTuser(user, user, id, todayCESTtime, tomorrowCESTtime, function(err, data, text) {
                                     if (err) {
                                         bot.reply(message, "Jago system not reached! err: ", err);
                                         return;
