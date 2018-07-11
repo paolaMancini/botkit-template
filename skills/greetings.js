@@ -2,7 +2,7 @@
 module.exports = function(controller) {
 
     controller.hears(['how are you| feeling'], 'direct_message,direct_mention', function(bot, message) {
-       oor lock.";
+      
         var message_options = [
             "Fine thanks!",
             "Very well, thank you.",
