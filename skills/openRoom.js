@@ -43,7 +43,7 @@ module.exports = function(controller) {
 
                 var tomorrowCEST = new Date();
                 tomorrowCEST.setDate(todayCEST.getDate() + 1);
-                var tomorrowCESTtime = tomorrowCEST.getTime();
+                var tomorrowCESTtime = tomorrowCEST.getTime() + (cestOffset * 60000);
                 var tomorrow = tomorrowCEST.getDate() + "-" + (tomorrowCEST.getMonth() + 1) + "-" + tomorrowCEST.getFullYear() + " " +
                     tomorrowCEST.getHours() + ":" + tomorrowCEST.getMinutes();
                 console.log('tomorrowCESTtime: ', tomorrowCESTtime);
