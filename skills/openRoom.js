@@ -31,34 +31,31 @@ module.exports = function(controller) {
                 //tomorrow.setDate(today.getDate() + 1);
                 //console.log(tomorrow);
                 var todayUTC = new Date();
-
+                console.log('todayUTC: ', todayUTC);
                 var utcOffset = todayUTC.getTimezoneOffset();
                 var cestOffset = utcOffset + 120;
 
-
+                console.log('cestOffset: ', cestOffset);
 
                 var todayCESTtime = todayUTC.getTime() + (cestOffset * 60000);
                 console.log('todayCESTtime: ', todayCESTtime)
                 var todayCEST = new Date(todayCESTtime);
-
-
-                var tomorrowUTC = new Date();
-
-                var cestOffset = utcOffset + 120;
-
-
-
-                var tomorrowCESTtime = tomorrowUTC.getTime() + (cestOffset * 60000);
-                console.log('tomorrowCESTtime: ', tomorrowCESTtime)
-                var tomorrowCEST = new Date(tomorrowCESTtime);
-
+                console.log('todayCEST: ', todayCEST)
                 var today = todayCEST.getDate() + "-" + (todayCEST.getMonth() + 1) + "-" + todayCEST.getFullYear() + " " +
                     todayCEST.getHours() + ":" + todayCEST.getMinutes();
                 console.log('today: ', today);
 
+                var tomorrowUTC = new Date();
+                tomorrowUTC.setDate(todayUTC.getDate() + 1);
+                var tomorrowCESTtime = tomorrowUTC.getTime() + (cestOffset * 60000);
+                var tomorrowCEST = new Date(tomorrowCESTtime);
                 var tomorrow = tomorrowCEST.getDate() + "-" + (tomorrowCEST.getMonth() + 1) + "-" + tomorrowCEST.getFullYear() + " " +
                     tomorrowCEST.getHours() + ":" + tomorrowCEST.getMinutes();
-                console.log('tomorrow: ', today);
+                console.log('tomorrow: ', tomorrow);
+
+                var tomorrow = tomorrowCEST.getDate() + "-" + (tomorrowCEST.getMonth() + 1) + "-" + tomorrowCEST.getFullYear() + " " +
+                    tomorrowCEST.getHours() + ":" + tomorrowCEST.getMinutes();
+                console.log('tomorrow: ', tomorrow);
 
                 JagoCalls.GETIdGuestTagByRoom(roomName.toLowerCase().trim(), function(err, data, text) {
                         var id = null;
