@@ -31,23 +31,34 @@ module.exports = function(controller) {
                 //tomorrow.setDate(today.getDate() + 1);
                 //console.log(tomorrow);
                 var todayUTC = new Date();
+
                 var utcOffset = todayUTC.getTimezoneOffset();
                 var cestOffset = utcOffset + 120;
+
+
+
                 var todayCESTtime = todayUTC.getTime() + (cestOffset * 60000);
+                console.log('todayCESTtime: ', todayCESTtime)
                 var todayCEST = new Date(todayCESTtime);
+
+
+                var tomorrowUTC = new Date();
+
+                var cestOffset = utcOffset + 120;
+
+
+
+                var tomorrowCESTtime = tomorrowUTC.getTime() + (cestOffset * 60000);
+                console.log('tomorrowCESTtime: ', tomorrowCESTtime)
+                var tomorrowCEST = new Date(tomorrowCESTtime);
+
                 var today = todayCEST.getDate() + "-" + (todayCEST.getMonth() + 1) + "-" + todayCEST.getFullYear() + " " +
                     todayCEST.getHours() + ":" + todayCEST.getMinutes();
-
-                console.log('todayCESTtime: ', todayCESTtime);
                 console.log('today: ', today);
 
-                var tomorrowCEST = new Date();
-                tomorrowCEST.setDate(todayCEST.getDate() + 1);
-                var tomorrowCESTtime = tomorrowCEST.getTime() + (cestOffset * 60000);
                 var tomorrow = tomorrowCEST.getDate() + "-" + (tomorrowCEST.getMonth() + 1) + "-" + tomorrowCEST.getFullYear() + " " +
                     tomorrowCEST.getHours() + ":" + tomorrowCEST.getMinutes();
-                console.log('tomorrowCESTtime: ', tomorrowCESTtime);
-                console.log('tomorrow: ', tomorrow);
+                console.log('tomorrow: ', today);
 
                 JagoCalls.GETIdGuestTagByRoom(roomName.toLowerCase().trim(), function(err, data, text) {
                         var id = null;
