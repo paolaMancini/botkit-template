@@ -53,9 +53,9 @@ var controller = Botkit.sparkbot({
     log: true,
     public_address: public_url,
     ciscospark_access_token: process.env.SPARK_TOKEN,
+    limit_to_domain: ['gmail.com'],
     secret: process.env.SECRET, // this is a RECOMMENDED security setting that checks of incoming payloads originate from Cisco Spark
     webhook_name: process.env.WEBHOOK_NAME || ('built with BotKit (' + env + ')'),
-    limit_to_domain: ['@italtel.com'],   
     jago_token: process.env.JAGO_TOKEN
 });
  
