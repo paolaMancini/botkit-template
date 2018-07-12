@@ -1,7 +1,7 @@
  
 module.exports = function(controller) {
 
-    controller.hears(['how are you| feeling'], 'direct_message,direct_mention', function(bot, message) {
+    controller.hears(['how are you| feeling|how are u'], 'direct_message,direct_mention', function(bot, message) {
       
         var message_options = [
             "Fine thanks!",
