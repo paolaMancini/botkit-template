@@ -1,6 +1,6 @@
 module.exports = function(controller) {
 
-    controller.hears([/'thank you|thanks|tnx| thnk| thank yuo|thank u'/i], 'direct_message,direct_mention', function(bot, message) {
+    controller.hears([/thank you|thanks|tnx| thnk| thank yuo|thank u/i], 'direct_message,direct_mention', function(bot, message) {
          
         var message_options = [
             "Not at all!",
