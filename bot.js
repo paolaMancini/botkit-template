@@ -41,7 +41,13 @@ if (!public_url) {
     process.exit(1);
 }
 
-
+if (!process.env.JAGO_TOKEN) {
+    console.log("Could not start as Jago APIs require a JAGO OAuth2 access token.");
+    console.log("Please add env variable JAGO (with Bearer on the command line or to the .env file");
+    console.log("Example: ");
+    console.log("> SPARK_TOKEN=XXXXXXXXXXXX PUBLIC_URL=YYYYYYYYYYYYY JAGO_TOKEN=XXXXXXXXXXXX node bot.js");
+    process.exit(1);
+}
 //
 // Create bot
 //
