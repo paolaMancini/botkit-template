@@ -3,7 +3,7 @@ var JagoCalls = require("./JagoAPIsCalls");
 
 module.exports = function(controller) {
 
-    controller.hears(['lock'], 'direct_message,direct_mention', function(bot, message) {
+    controller.hears([/lock/i], 'direct_message,direct_mention', function(bot, message) {
         console.log('message: ', message);
  
         
