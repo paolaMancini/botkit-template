@@ -129,7 +129,6 @@ require("fs").readdirSync(normalizedPath).forEach(function (file) {
 
 
 // Log every mess
-ved
 controller.middleware.receive.use(function(bot, message, next) {
 
   // log it
