@@ -81,7 +81,7 @@ if (!dialogflow) {
     process.exit(1);
 }
 var options = {
-    token: dialogflow,
+    token: dialogflow
 };
 var dialogflowMiddleware = require('botkit-middleware-dialogflow')(options);
 controller.middleware.receive.use(dialogflowMiddleware.receive);
