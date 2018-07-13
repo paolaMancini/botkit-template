@@ -6,6 +6,7 @@
 //
 // BotKit configuration
 //
+var allowedDomains = ["italtel.com","cisco.com", "sofialocks.com"];
 
 // Load environment variables from project .env file
 require('node-env-file')(__dirname + '/.env');
@@ -59,10 +60,8 @@ var controller = Botkit.sparkbot({
     log: true,
     public_address: public_url,
     ciscospark_access_token: process.env.SPARK_TOKEN,
-    limit_to_domain: ['@italtel.com','@cisco.com','@sofialocks.com'],
     secret: process.env.SECRET, // this is a RECOMMENDED security setting that checks of incoming payloads originate from Cisco Spark
-    webhook_name: process.env.WEBHOOK_NAME || ('built with BotKit (' + env + ')'),
-    jago_token: process.env.JAGO_TOKEN
+    webhook_name: process.env.WEBHOOK_NAME || ('built with BotKit (' + env + ')')
 });
  
 
