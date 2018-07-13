@@ -84,7 +84,7 @@ var options = {
     token: dialogflow,
 };
 var dialogflowMiddleware = require('botkit-middleware-dialogflow')(options);
-
+controller.middleware.receive.use(dialogflowMiddleware.receive);
 
 var port = process.env.PORT || 3000;
 controller.setupWebserver(port, function (err, webserver) {
