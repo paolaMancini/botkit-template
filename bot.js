@@ -128,7 +128,21 @@ require("fs").readdirSync(normalizedPath).forEach(function (file) {
 //
 
 
-console.log('Process  - ',process);
+// Log every mess
+ved
+controller.middleware.receive.use(function(bot, message, next) {
+
+  // log it
+  console.log('RECEIVED: ', message);
+
+  // modify the message
+  message.logged = true;
+
+  // continue processing the message
+  next();
+
+});
+
 // Utility to add mentions if Bot is in a 'Group' space
 bot.appendMention = function (message, command) {
     
