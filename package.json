@@ -14,7 +14,6 @@
   "license": "MIT",
   "dependencies": {
     "botkit": "0.6.0",
-    "botkit-middleware-dialogflow": "^1.4.1",
     "node-env-file": "0.1.8"
   },
   "repository": {
