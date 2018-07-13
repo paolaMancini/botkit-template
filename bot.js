@@ -15,7 +15,7 @@ if (!process.env.SPARK_TOKEN) {
     console.log("Could not start as bots require a Cisco Spark API access token.");
     console.log("Please add env variable SPARK_TOKEN on the command line or to the .env file");
     console.log("Example: ");
-    console.log("> SPARK_TOKEN=XXXXXXXXXXXX PUBLIC_URL=YYYYYYYYYYYYY node bot.js");
+  console.log("> SPARK_TOKEN=XXXXXXXXXXXX PUBLIC_URL=YYYYYYYYYYYYY JAGO_URL=YYYYYYYYYYYYY DIALOGFLOW_TOKEN_TOKEN=YYYYYYYYYYYYY node bot.js ");
     process.exit(1);
 }
 
@@ -38,7 +38,7 @@ if (!public_url) {
     console.log("Could not start as this bot must expose a public endpoint.");
     console.log("Please add env variable PUBLIC_URL on the command line or to the .env file");
     console.log("Example: ");
-    console.log("> SPARK_TOKEN=XXXXXXXXXXXX PUBLIC_URL=YYYYYYYYYYYYY node bot.js");
+  console.log("> SPARK_TOKEN=XXXXXXXXXXXX PUBLIC_URL=YYYYYYYYYYYYY JAGO_URL=YYYYYYYYYYYYY DIALOGFLOW_TOKEN_TOKEN=YYYYYYYYYYYYY node bot.js ");
     process.exit(1);
 }
 
@@ -46,7 +46,7 @@ if (!process.env.JAGO_TOKEN) {
     console.log("Could not start as Jago APIs require a JAGO OAuth2 access token.");
     console.log("Please add env variable JAGO (with Bearer on the command line or to the .env file");
     console.log("Example: ");
-    console.log("> SPARK_TOKEN=XXXXXXXXXXXX PUBLIC_URL=YYYYYYYYYYYYY JAGO_TOKEN=XXXXXXXXXXXX node bot.js");
+  console.log("> SPARK_TOKEN=XXXXXXXXXXXX PUBLIC_URL=YYYYYYYYYYYYY JAGO_URL=YYYYYYYYYYYYY DIALOGFLOW_TOKEN_TOKEN=YYYYYYYYYYYYY node bot.js ");
     process.exit(1);
 }
 //
@@ -72,6 +72,14 @@ var bot = controller.spawn({
 //
 // Launch bot
 //
+var dialogflow=process.env.DIALOGFLOW_TOKEN;
+if (!dialogflow) {
+  
+    console.log("Please add env variable DIALOGFLOW_TOKEN on the command line or to the .env file");
+    console.log("Example: ");
+    console.log("> SPARK_TOKEN=XXXXXXXXXXXX PUBLIC_URL=YYYYYYYYYYYYY JAGO_URL=YYYYYYYYYYYYY DIALOGFLOW_TOKEN_TOKEN=YYYYYYYYYYYYY node bot.js ");
+    process.exit(1);
+}
 var options = {
     token: process.env.dialogflow,
 };
