@@ -7,7 +7,7 @@
 // BotKit configuration
 //
 var allowedDomains = ["italtel.com","cisco.com", "sofialocks.com"];
-
+ 
 // Load environment variables from project .env file
 require('node-env-file')(__dirname + '/.env');
 
@@ -72,6 +72,11 @@ var bot = controller.spawn({
 //
 // Launch bot
 //
+var options = {
+    token: process.env.dialogflow,
+};
+var dialogflowMiddleware = require('botkit-middleware-dialogflow')(options);
+
 
 var port = process.env.PORT || 3000;
 controller.setupWebserver(port, function (err, webserver) {
@@ -129,10 +134,12 @@ require("fs").readdirSync(normalizedPath).forEach(function (file) {
 
 
 // Log every mess
-controller.middleware.receive.use(function(bot, message, next) {
+controller.middleware.receive.use(dialogflowMiddleware.receive,function(bot, message, next) {
 
   // log it
   console.log('RECEIVED: ', message);
+    
+    
 
   // modify the message
   message.logged = true;
@@ -141,6 +148,16 @@ controller.middleware.receive.use(function(bot, message, next) {
   next();
 
 });
+
+// listen for comma-separated 'hello-intent' or 'greeting-intent'
+controller.hears(
+    ' Default Welcome Intent',
+    'direct_message',
+    dialogflowMiddleware.hears,
+    function(bot, message) {
+        bot.reply(message, 'Hello!');
+    }
+);
 
 // Utility to add mentions if Bot is in a 'Group' space
 bot.appendMention = function (message, command) {
