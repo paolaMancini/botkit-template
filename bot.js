@@ -127,10 +127,12 @@ require("fs").readdirSync(normalizedPath).forEach(function (file) {
 // Cisco Spark Utilities
 //
 
+
+console.log('Process  - ',process);
 // Utility to add mentions if Bot is in a 'Group' space
 bot.appendMention = function (message, command) {
     
-    console.log('BOT.JS - ',message);
+    
  
     // if the message is a raw message (from a post message callback such as bot.say())
     if (message.roomType && (message.roomType == "group")) {
