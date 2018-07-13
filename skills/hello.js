@@ -1,8 +1,7 @@
  
  
 module.exports = function(controller) {
-      
-     }
+   
       console.log('message: ', message);
        console.log('message.data.personEmail: ', message.data.personEmail);   
        var message_options = [
