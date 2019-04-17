@@ -16,7 +16,7 @@ module.exports = function (controller) {
 
             convo.ask("Please choose a skill among 'color', 'restricted', 'show', 'storage', 'threads', 'variables', 'about', 'join', 'help'", [
                 {
-                    pattern: "^color|restricted|show|storage|threads|variables|about|join|help$",
+                    pattern: "^color|restricted|show|storage|threads|variables|about|help$",
                     callback: function (response, convo) {
                         // ends current conversation
                         convo.stop();
