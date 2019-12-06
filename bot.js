@@ -49,13 +49,19 @@ if (!public_url) {
 var Botkit = require('botkit');
 
 var env = process.env.NODE_ENV || "development";
-var controller = Botkit.sparkbot({
-    log: true,
-    public_address: public_url,
-    ciscospark_access_token: process.env.ACCESS_TOKEN,
-    secret: process.env.SECRET, // this is a RECOMMENDED security setting that checks of incoming payloads originate from Cisco Spark
-    webhook_name: process.env.WEBHOOK_NAME || ('built with BotKit (' + env + ')')
+
+const adapter = new WebexAdapter({
+    access_token: process.env.ACCESS_TOKEN,
+    public_address: process.env.PUBLIC_ADDRESS,
+    secret: process.env.SECRET,
+     webhook_name: process.env.WEBHOOK_NAME || ('built with BotKit (' + env + ')')
 });
+const controller = new Botkit({
+    adapter,
+    log: true
+    // ...other options
+});
+ 
 
 var bot = controller.spawn({
 });
