@@ -48,7 +48,7 @@ module.exports = function (controller, bot) {
     //
     // .botcommons skill
     //
-    controller.hears([/^about$/, /^botcommons$/, /^\.commons$/, /^\.bot$/], 'direct_message,direct_mention', function (bot, message) {
+    controller.on([/^about$/, /^botcommons$/, /^\.commons$/, /^\.bot$/], 'direct_message,direct_mention', async function (bot, message)=> {
 
         // Return metadata
         var metadata = '{\n'
@@ -59,7 +59,7 @@ module.exports = function (controller, bot) {
             + '   "healthcheck" : "' + botcommons["healthcheck"] + '",\n'
             + '}\n';
 
-        bot.reply(message, '```json\n' + metadata + '\n```');
+        await bot.reply(message, '```json\n' + metadata + '\n```');
     });
 
 }
